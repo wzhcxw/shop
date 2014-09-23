@@ -40,7 +40,7 @@ public class NewsJdbcDaolmpl extends  JdbcDao implements NewsDao
 		
 	}
 	
-	@Override //删除对应文章
+	@Override //删除文章
 	public boolean deleteNews(String uiid , String seconduiid)
 	{
 		String sqll = "delete from newslisttable  where 'uiid' = s% and 'seconduiid' = s%";

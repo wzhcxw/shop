@@ -1,0 +1,6 @@
+INDEX VERSION 1.3+/Users/johan/Desktop/123/wangzhan/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3116496275.index
+4015199562.index
+4243789974.index
+920555689.index
+109358153.index

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+	default-lazy-init="false">
+	<!-- jdbc构建 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<!-- <value>classpath:jdbc-dev.properties</value> -->
+				<value>classpath:jdbc_dev.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<property name="testOnBorrow" value="true" />
+		<property name="validationQuery" value="select current_timestamp();" />
+	</bean>
+	<bean id="timeUseAspect" class="com.gaogao.common.base.TimeUseAspect" />
+	<aop:config>
+		<aop:pointcut id="pointcut" expression="execution(* com.gaogao..*(..))" />
+		<aop:aspect ref="timeUseAspect">
+			<aop:around method="aroundAdvice" pointcut-ref="pointcut" />
+			<aop:after-throwing pointcut-ref="pointcut"
+				method="doThrowing" throwing="ex" />
+		</aop:aspect>
+	</aop:config>
+
+	<!-- JDBC配置 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="jdbcTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="jdbcDao" class="com.gaogao.common.base.JdbcDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<!-- 声明事务管理 -->
+	<!-- 配置事务传播特性 -->
+	<tx:advice id="Advice" transaction-manager="jdbcTransactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="query*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置参与事务的类 -->
+	<aop:config>
+		<aop:pointcut id="ServiceMethod"
+			expression="execution(* com.gaogao.bussiness..*.*(..))" />
+		<aop:advisor pointcut-ref="ServiceMethod" advice-ref="Advice" />
+	</aop:config>
+	<!-- 数据库 -->
+	<import resource="classpath:applicationContext-dataaccess.xml" />
+	<!-- 业务 -->
+	<import resource="classpath:applicationContext-bussiness.xml" />
+	
+
+</beans>
