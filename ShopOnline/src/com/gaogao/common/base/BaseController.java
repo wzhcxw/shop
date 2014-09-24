@@ -33,7 +33,6 @@ public class BaseController {
 			} 
 			String str =sb.toString(); 
 			
-			int le = str.length();
 			object = JSON.parseObject(str, clazz);
 			
 		}

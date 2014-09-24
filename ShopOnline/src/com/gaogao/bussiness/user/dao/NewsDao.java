@@ -11,7 +11,7 @@ public interface NewsDao {
 	public boolean addNews(News news);
 	public boolean updateNews(News user);
 	public List<News> getNews(String uiid , String seconduiid,int pagesize);
-	
-	public boolean deleteNews(String uiid , String seconduiid);
+	public List<News> getallNews();
+	public boolean deleteNews(News title);
 
 }

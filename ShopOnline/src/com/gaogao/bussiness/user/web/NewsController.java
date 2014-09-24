@@ -66,9 +66,9 @@ public class NewsController extends BaseController{
 	@ResponseBody
 	public Object deletenews(HttpServletRequest request){
 		ResultMessage result = null;
-		News news = this.getParametersObject(request, News.class);
+		News title = this.getPostDataToObject(request, News.class);
 
-		if (this.newsService.deleteNews(news.getUiid(), news.getSeconduiid())) {
+		if (this.newsService.deleteNews(title)) {
 			result = ResultMessage.getSuccessResult("1", "删除失败，稍等一会再提交删除");
 		} else {
 			result = ResultMessage.getSuccessResult("0", "删除成功");
@@ -92,6 +92,19 @@ public class NewsController extends BaseController{
 		
 	}
 	
+	@RequestMapping("/getallnews")
+	@ResponseBody
+	public Object getallNews(HttpServletRequest request){
+		ResultMessage result = null;
+		//News news = this.getParametersObject(request, News.class);
+		
+	    List<News> newsArray =	newsService.getallNews();
+		String arr = JSON.toJSONString(newsArray);
+		result = ResultMessage.getSuccessResult("0", "成功");
+		result.setDatas(arr);
+		return result;
+		
+	}
 	
 	public NewsService getNewsService() {
 		return newsService;

@@ -46,10 +46,16 @@ public class NewsServicelmpl implements NewsService{
 	
 	
 	@Override
-	public boolean deleteNews(String uiid , String seconduiid)
+	public boolean deleteNews(News title)
 	{
 		
-		return newsDao.deleteNews(uiid, seconduiid);
+		return newsDao.deleteNews(title);
+	}
+	@Override
+	public List<News> getallNews()
+	{
+		return newsDao.getallNews();
+		
 	}
 	
 

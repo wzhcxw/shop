@@ -10,5 +10,6 @@ public interface NewsService {
 	public boolean updateNews(News news);
 	public List<News> getNews(String uiid , String seconduiid,int pagesize);
 	
-	public boolean deleteNews(String uiid , String seconduiid);
+	public boolean deleteNews(News title);
+	public List<News> getallNews();
 }

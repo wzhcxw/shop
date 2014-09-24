@@ -24,7 +24,7 @@ public class NewsJdbcDaolmpl extends  JdbcDao implements NewsDao
 	//更新文章
 	@Override
 	public boolean updateNews(News news){
-		String sqlll = "update newslisttable set 'content' = 's%' , 'sort' = 's%' , 'title' = 's%' where 'uiid' = 's%' and seconduiid = 's%' ";
+		String sqlll = "update newslisttable set 'content' = '%s' , 'sort' = '%s' , 'title' = '%s' where 'uiid' = '%s' and seconduiid = '%s' ;";
 		sqlll = String.format(sqlll, news.getContent(),news.getSort(),news.getTitle(),news.getUiid(), news.getSeconduiid());
 		return this.update(sqlll.toString());
 	}
@@ -32,7 +32,7 @@ public class NewsJdbcDaolmpl extends  JdbcDao implements NewsDao
 	@Override //获取文章数据，参数：uiid，seconduiid， 条数
 	public List<News> getNews(String uiid , String seconduiid ,int pagesize)
 	{
-		String sqll = "select title , content from newslisttable where 'uiid' = s% and 'seconduiid' = s%";
+		String sqll = "select title , content from newslisttable where 'uiid' = %s and 'seconduiid' = '%s';";
 		sqll = String.format(sqll, uiid , seconduiid);
 		NewsMapper newsmaper = new NewsMapper();
 		List<News> newslist = this.query( sqll, newsmaper ) ;
@@ -40,12 +40,30 @@ public class NewsJdbcDaolmpl extends  JdbcDao implements NewsDao
 		
 	}
 	
-	@Override //删除文章
-	public boolean deleteNews(String uiid , String seconduiid)
+	
+	@Override //获取所有文章
+	public List<News> getallNews()
 	{
-		String sqll = "delete from newslisttable  where 'uiid' = s% and 'seconduiid' = s%";
-		sqll = String.format(sqll, uiid , seconduiid);
-	    return this.update(sqll);
+		String sqll = "select *  from newslisttable;";
+
+		NewsMapper newsmaper = new NewsMapper();
+		List<News> newslist = this.query( sqll, newsmaper ) ;
+	    return newslist;
+		
+	}
+	
+	
+	
+	@Override //删除文章
+	public boolean deleteNews(News news)
+	{
+		               
+		String sqll = "DELETE FROM newslisttable WHERE title='%s';";
+		String str = news.getTitle();
+		
+		sqll = String.format(sqll, str);
+		this.getJdbcTemplate().execute(sqll);
+	    return true;
 	}
 	
 	

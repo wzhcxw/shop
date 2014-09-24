@@ -16,23 +16,60 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 
 </style>
 	<meta charset="utf-8">
+	<script  src="../js/jquery-1.7.2.min.js"></script>
+	<script src="../js/json.js" ></script>
 	<script>
 	
 	function addrow(){
-		alert("adddd");
-		var newTr = listtable.insertRow();
-        //添加两列
-        var newTd0 = newTr.insertCell();
-        
-        var newTd1 = newTr.insertCell();
+		var url='./news/getallnews.do?';
+		$.get(url,function(data) {
+			if(data.flag=='0'){
+				
+				var array = JSON.parse(data.datas);
+				
+				for(var i = 0 ; i < array.length;i++)
+				{
+					var newTr = listtable.insertRow();
+			        //添加两列
+			        var newTd1 = newTr.insertCell();
+			        var newTd2 = newTr.insertCell();
+			        var newTd3 = newTr.insertCell();
+			        var newTd4 = newTr.insertCell();
+			        var newTd5 = newTr.insertCell();
+			       
+			        //设置列内容和属性
+			        var tilel = "<div>" + array[i].title + "</div>";
+			        var uiid = "<div>" + array[i].uiid + "</div>";
+			        var seconduiid = "<div>" + array[i].seconduiid + "</div>";
 
-        //设置列内容和属性
-        newTd0.innerHTML = '<input type=button width="50" id="box4">'; 
-        newTd1.innerHTML = '<div>asdfasdfaf</div>';
+			        var deleburron = '<input type="button" value="删 除"' +'onclick= '+  '"'+ 'deletenews('+"'" + array[i].title+"'"+')'+'"' + '/>'
+			        
+			        newTd1.innerHTML = tilel;
+			        newTd2.innerHTML = uiid; 
+			        newTd3.innerHTML = seconduiid;
+			        newTd4.innerHTML = deleburron;
+			        newTd5.innerHTML = '<input type="button" value="修 改">';
 
+				}
+			}
+		});
 	}
 	
+	function deletenews(title){
+	
+		var jsonStr = {seconduiid:"d",sort:"d",uiid:"d",title:title,content:"d"};
+		jsonStr = JSON.stringify(jsonStr);
 
+		
+		$.post("./news/deletenews.do",jsonStr,
+	    function(data){
+	      if(data.flag == "0"){
+	      	alert(data.message);
+	      }
+	      
+	    });
+		document.frames('mainframe').location.reload()
+	}
 
 
 	</script>
@@ -59,7 +96,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 </table>
 
 
-
+<input type=button width="50" onclick="addrow()"  id="addbutton">
 </body>
 
 </html>

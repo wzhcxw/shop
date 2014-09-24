@@ -31,14 +31,14 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 			var seconduiid = $("input[name='seconduiid']:checked").val();
 			
 			var uiid = $("input[name='whichpage']:checked").val();
-	        var titleValue =	document.getElementById("title");
-	        var sortvalue =	document.getElementById("sort");
+	        var titleValue =	document.getElementById("title").value;
+	        var sortvalue =	document.getElementById("sort").value;
 	        var base64 = new Base64();  
 	        var srccontent = base64.encode(editor.getData());
 	        srccontent = srccontent.replace('+', '_');
 	        srccontent = srccontent.replace('/', '-');
 
-			var jsonStr = {seconduiid:seconduiid,sort:sortvalue.value,uiid:uiid,title:titleValue.value,content:srccontent};
+			var jsonStr = {seconduiid:seconduiid,sort:sortvalue,uiid:uiid,title:titleValue,content:srccontent};
 			jsonStr = JSON.stringify(jsonStr);
 			
 		    $.post("./news/addnews.do",jsonStr,
