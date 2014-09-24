@@ -68,7 +68,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	      }
 	      
 	    });
-		
+		document.frames('mainframe').location.reload()
 	}
 
 
