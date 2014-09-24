@@ -68,7 +68,7 @@ public class NewsController extends BaseController{
 		ResultMessage result = null;
 		News title = this.getPostDataToObject(request, News.class);
 
-		if (this.newsService.deleteNews(title)) {
+		if (!this.newsService.deleteNews(title)) {
 			result = ResultMessage.getSuccessResult("1", "删除失败，稍等一会再提交删除");
 		} else {
 			result = ResultMessage.getSuccessResult("0", "删除成功");

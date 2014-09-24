@@ -22,14 +22,18 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	
 	function addrow(){
 		var url='./news/getallnews.do?';
+		
+
+		
 		$.get(url,function(data) {
 			if(data.flag=='0'){
 				
 				var array = JSON.parse(data.datas);
-				
+				alert(array.length);
 				for(var i = 0 ; i < array.length;i++)
 				{
-					var newTr = listtable.insertRow();
+				
+					var newTr = listtable.insertRow(0);
 			        //添加两列
 			        var newTd1 = newTr.insertCell();
 			        var newTd2 = newTr.insertCell();
@@ -42,7 +46,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 			        var uiid = "<div>" + array[i].uiid + "</div>";
 			        var seconduiid = "<div>" + array[i].seconduiid + "</div>";
 
-			        var deleburron = '<input type="button" value="删 除"' +'onclick= '+  '"'+ 'deletenews('+"'" + array[i].title+"'"+')'+'"' + '/>'
+			        var deleburron = '<input type="button" value="删 除"' +'id='+"'" + array[i].title+"'" +'onclick= '+  '"'+ 'deletenews(this)'+'"' + '/>'
 			        
 			        newTd1.innerHTML = tilel;
 			        newTd2.innerHTML = uiid; 
@@ -55,22 +59,26 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 		});
 	}
 	
-	function deletenews(title){
+	function deletenews(item){
+		
+		var title = item.id;
 	
 		var jsonStr = {seconduiid:"d",sort:"d",uiid:"d",title:title,content:"d"};
 		jsonStr = JSON.stringify(jsonStr);
-
-		
 		$.post("./news/deletenews.do",jsonStr,
 	    function(data){
 	      if(data.flag == "0"){
-	      	alert(data.message);
+	        
+	        //本地删除数据
+	      	var table=document.getElementById("listtable"); 
+	      	var i = item.parentNode.parentNode.rowIndex;
+	      	table.deleteRow(i);
+	      	
 	      }
 	      
 	    });
-		
-	}
 
+	}
 
 	</script>
 
@@ -78,7 +86,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 
 <body bgcolor="#F7F8F9" id= mainbody onload ="addrow()" >
 
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td width="17" valign="top" background="../admin/images/mail_leftbg.gif"><img src="../admin/images/left-top-right.gif" width="17" height="29" /></td>
     <td valign="top" background="../admin/images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
