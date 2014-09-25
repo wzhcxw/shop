@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<!--
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
--->
-
-<html>
 <link href="../admin/images/skin.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <head>
-	<meta charset="utf-8">
 	<script src="../admin/js/ckeditor.js"></script>
 	<script  src="../js/jquery-1.7.2.min.js"></script>
 	<script  src="../js/jsbase64.js"></script>
@@ -121,33 +114,6 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 			urlpser(this.location.href);
 		}
 		
-	</script>
-</head>
-
-<body bgcolor="#F7F8F9" id= mainbody onload ="createEditor()" >
-
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="17" valign="top" background="../admin/images/mail_leftbg.gif"><img src="../admin/images/left-top-right.gif" width="17" height="29" /></td>
-    <td valign="top" background="../admin/images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
-      <tr>
-        <td height="31"><div class="titlebt">添加文章</div></td>
-      </tr>
-    </table></td>
-    <td width="16" valign="top" background="../admin/images/mail_rightbg.gif"><img src="../admin/images/nav-right-bg.gif" width="16" height="29" /></td>
-</table>
-
- 	<br>
-	<br>
-	一级模块：
-	<input type="radio" onclick="writeSecondMod(this)" name="whichpage" value="home" />网站首页
-	<input type="radio" onclick="writeSecondMod(this)" name="whichpage" value="news" /> 新闻中心
-	<input type="radio" onclick="writeSecondMod(this)" name="whichpage" value="sucessexample" /> 成功案例
-	<input type="radio" onclick="writeSecondMod(this)" name="whichpage" value="ofquestion" /> 常见问题
-	<br/>
-	
-	<script type="text/javascript">
-	
 		function writeSecondMod(obj){
 		if(obj.value == 'home')
    			document.getElementById("secondmod").innerHTML = '<body id = "secondemodd">二级模块：<input type="radio" name="seconduiid" value="newss" />新闻中心<input type="radio" name="seconduiid" value="sucessexamples" />成功案例</body>';
@@ -155,6 +121,45 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 			document.getElementById('secondmod').innerHTML = "";		
 		}
 	</script>
+</head>
+<style type="text/css">
+<!--
+body {
+margin-left: 0px;
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+background-color: #EEF2FB;
+}
+-->
+</style>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td width="17" valign="top" background="../admin/images/mail_leftbg.gif"><img src="../admin/images/left-top-right.gif" width="17" height="29" /></td>
+<td valign="top" background="../admin/images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+<tr>
+<td height="31"><div class="titlebt">添加商品</div></td>
+</tr>
+</table></td>
+<td width="16" valign="top" background="../admin/images/mail_rightbg.gif"><img src="../admin/images/nav-right-bg.gif" width="16" height="29" /></td>
+</tr>
+
+
+<tr>
+<td valign="middle" background="../admin/images/mail_leftbg.gif">&nbsp;</td>
+<td valign="top" bgcolor="#F7F8F9">&nbsp;
+
+<body  id= mainbody onload ="createEditor()" >
+ 	<br>
+	<br>
+	一级模块b
+	<input type="radio" onclick="writeSecondMod(this)" name="whichpage" value="home" />网站首页
+	<input type="radio" onclick="writeSecondMod(this)" name="whichpage" value="news" /> 新闻中心
+	<input type="radio" onclick="writeSecondMod(this)" name="whichpage" value="sucessexample" /> 成功案例
+	<input type="radio" onclick="writeSecondMod(this)" name="whichpage" value="ofquestion" /> 常见问题
+	<br/>
+	
 	<div id="secondmod"> </div>
 		<br/>
 		文章排序索引：<input id="sort" value="1" size="10" type="text"><br>
@@ -177,8 +182,22 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	<br/>
 	<br>
 	<h1></h1>
-
-
 </body>
 
-</html>
+
+
+
+
+</td>
+<td background="../admin/images/mail_rightbg.gif">&nbsp;
+
+
+</td>
+</tr>
+<tr>
+<td valign="bottom" background="../admin/images/mail_leftbg.gif"><img src="../admin/images/buttom_left2.gif" width="17" height="17" /></td>
+<td background="../admin/images/buttom_bgs.gif"><img src="../admin/images/buttom_bgs.gif" width="17" height="17"></td>
+<td valign="bottom" background="../admin/images/mail_rightbg.gif"><img src="../admin/images/buttom_right2.gif" width="16" height="17" /></td>
+</tr>
+</table>
+</body> 
