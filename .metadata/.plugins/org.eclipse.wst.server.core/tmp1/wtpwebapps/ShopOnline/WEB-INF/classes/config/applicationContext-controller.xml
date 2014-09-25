@@ -23,6 +23,10 @@
 		<property name="newsService" ref="newsService"></property>
 	</bean>
 	
+	<bean class = "com.gaogao.bussiness.user.web.ShangPinController" parent="baseController1">
+	<property name="shangPinService" ref="shangPinService"></property>
+	</bean>
+	
 	<bean class="com.gaogao.bussiness.pageelement.web.PageElementController"
 		parent="baseController1">
 		<property name="pageElementDao" ref="pageElementDao" />

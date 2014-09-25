@@ -16,6 +16,7 @@
 	<bean id="pageElementDao" class="com.gaogao.bussiness.pageelement.dao.PageElementJdbcDaoImpl" parent="jdbcDao" />
 		
 	<bean id="newsDao" class = "com.gaogao.bussiness.user.dao.NewsJdbcDaolmpl" parent="jdbcDao" />
+	<bean id="shangPinDao" class = "com.gaogao.bussiness.user.dao.ShangPinJdbcDaolmpl" parent="jdbcDao" />
 			 
 
 </beans>

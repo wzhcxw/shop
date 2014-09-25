@@ -1,0 +1,13 @@
+127.0.0.1 - - [25/Sep/2014:00:00:52 -0700] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:00:52 -0700] "GET /ShopOnline/WEB-INF/classes/com/gaogao/bussiness/user/web/ShangPinController.java HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:01:07 -0700] "GET /ShopOnline/admin/shangpin/addshangpin.do HTTP/1.1" 500 9125
+127.0.0.1 - - [25/Sep/2014:00:04:40 -0700] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:04:40 -0700] "GET /ShopOnline/WEB-INF/classes/com/gaogao/bussiness/user/web/ShangPinController.java HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:04:45 -0700] "GET /ShopOnline/admin/shangping/addshangping.do HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:05:27 -0700] "GET /ShopOnline/admin/shangping/addshangping.do HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:05:45 -0700] "GET /ShopOnline/admin/shangping/addshangping.do? HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:06:04 -0700] "GET /ShopOnline/admin/newslist.html HTTP/1.1" 200 3226
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:06:04 -0700] "GET /ShopOnline/js/json.js HTTP/1.1" 200 17581
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:06:04 -0700] "GET /ShopOnline/admin/images/skin.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:06:05 -0700] "GET /favicon.ico HTTP/1.1" 404 973
+0:0:0:0:0:0:0:1%0 - - [25/Sep/2014:00:06:06 -0700] "GET /ShopOnline/admin/news/getallnews.do? HTTP/1.1" 200 416
