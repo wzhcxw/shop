@@ -4,15 +4,12 @@ Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
 -->
 
-<html>
+<html id = "htmlll">
 <link href="../admin/images/skin.css" rel="stylesheet" type="text/css" />
 <head>
 <style  type="text/css">
-	list{
-                width:500px;  
-                height:150px;  
-                border:6px solid red;  
-	}
+
+
 
 </style>
 	<meta charset="utf-8">
@@ -22,14 +19,9 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	
 	function addrow(){
 		var url='./news/getallnews.do?';
-		
-
-		
 		$.get(url,function(data) {
 			if(data.flag=='0'){
-				
 				var array = JSON.parse(data.datas);
-				alert(array.length);
 				for(var i = 0 ; i < array.length;i++)
 				{
 				
@@ -47,20 +39,25 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 			        var seconduiid = "<div>" + array[i].seconduiid + "</div>";
 
 			        var deleburron = '<input type="button" value="删 除"' +'id='+"'" + array[i].title+"'" +'onclick= '+  '"'+ 'deletenews(this)'+'"' + '/>'
-			        
+			        var modifyburron = '<input type="button" value="修 改"' +'id='+"'" + array[i].title+"'" +'onclick= '+  '"'+ 'modifynews(this)'+'"' + '/>'
 			        newTd1.innerHTML = tilel;
 			        newTd2.innerHTML = uiid; 
 			        newTd3.innerHTML = seconduiid;
 			        newTd4.innerHTML = deleburron;
-			        newTd5.innerHTML = '<input type="button" value="修 改">';
+			        newTd5.innerHTML = modifyburron;
 
 				}
 			}
 		});
 	}
+	function modifynews(item){
+			var news = {seconduiid:"d",sort:"d",uiid:"d",title:item.id,content:"d"}
+			news = JSON.stringify(news);
+		    this.location.href = "../admin/editor.html? "+ news
+		   
 	
+	}
 	function deletenews(item){
-		
 		var title = item.id;
 	
 		var jsonStr = {seconduiid:"d",sort:"d",uiid:"d",title:title,content:"d"};
@@ -68,11 +65,12 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 		$.post("./news/deletenews.do",jsonStr,
 	    function(data){
 	      if(data.flag == "0"){
+	        
+	        //本地删除数据
 	      	var table=document.getElementById("listtable"); 
 	      	var i = item.parentNode.parentNode.rowIndex;
 	      	table.deleteRow(i);
-	      	
-	      	
+	      	document.parentNode
 	      }
 	      
 	    });
@@ -96,13 +94,13 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
     <td width="16" valign="top" background="../admin/images/mail_rightbg.gif"><img src="../admin/images/nav-right-bg.gif" width="16" height="29" /></td>
 </table>
 
-<table id = "listtable" class="list" >
+<table id = "listtable" bordercolor="#854389" width="600"  class="list" >
 
 
 
 </table>
 
-
+<a href="../admin/editor.html" target=this >添加文章</a>
 <input type=button width="50" onclick="addrow()"  id="addbutton">
 </body>
 

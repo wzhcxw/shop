@@ -24,8 +24,8 @@ public class NewsJdbcDaolmpl extends  JdbcDao implements NewsDao
 	//更新文章
 	@Override
 	public boolean updateNews(News news){
-		String sqlll = "update newslisttable set 'content' = '%s' , 'sort' = '%s' , 'title' = '%s' where 'uiid' = '%s' and seconduiid = '%s' ;";
-		sqlll = String.format(sqlll, news.getContent(),news.getSort(),news.getTitle(),news.getUiid(), news.getSeconduiid());
+		String sqlll = "UPDATE newslisttable SET  content = '%s',sort = '%s' , uiid = '%s' , seconduiid = '%s'  where title = '%s' ;";
+		sqlll = String.format(sqlll, news.getContent(),news.getSort(),news.getUiid(), news.getSeconduiid(),news.getTitle());
 		return this.update(sqlll.toString());
 	}
 	
@@ -51,7 +51,20 @@ public class NewsJdbcDaolmpl extends  JdbcDao implements NewsDao
 	    return newslist;
 		
 	}
-	
+	@Override //获取获取文章
+	public List<News> getNewsByTitle(News news)
+	{
+		String sqll = "select *  from newslisttable WHERE title='%s';";
+		String str = news.getTitle();
+		
+		sqll = String.format(sqll, str);
+		
+		NewsMapper newsmaper = new NewsMapper();
+		
+		List<News> newslist = this.query( sqll, newsmaper ) ;
+	    return newslist;
+		
+	}
 	
 	
 	@Override //删除文章

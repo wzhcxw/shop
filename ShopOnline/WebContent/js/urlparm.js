@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+
+function urlparm(url){
+	
+	
+	
+	return ;
+	
+}

@@ -13,5 +13,6 @@ public interface NewsDao {
 	public List<News> getNews(String uiid , String seconduiid,int pagesize);
 	public List<News> getallNews();
 	public boolean deleteNews(News title);
+	public List<News> getNewsByTitle(News news);
 
 }

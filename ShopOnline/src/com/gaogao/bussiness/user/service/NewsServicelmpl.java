@@ -57,6 +57,12 @@ public class NewsServicelmpl implements NewsService{
 		return newsDao.getallNews();
 		
 	}
+	@Override
+	public List<News> getNewsByTitle(News news)
+	{
+		return newsDao.getNewsByTitle(news);
+		
+	}
 	
 
 }
