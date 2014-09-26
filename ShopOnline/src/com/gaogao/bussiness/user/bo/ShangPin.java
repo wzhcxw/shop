@@ -27,6 +27,9 @@ public class ShangPin {
 	public synchronized String getPrice() {
 		return price;
 	}
+	public synchronized String getGuige() {
+		return guige;
+	}
 	public synchronized String getDscr() {
 		return dscr;
 	}
