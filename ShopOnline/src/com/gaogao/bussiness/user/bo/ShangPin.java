@@ -79,13 +79,13 @@ public class ShangPin {
 		this.chandi = chandi;
 	}
 	public synchronized void setIamgeUrl1(String iamgeurl1) {
-		this.name = iamgeurl1;
+		this.iamgeurl1 = iamgeurl1;
 	}
 	public synchronized void setIamgeUrl2(String iamgeurl2) {
-		this.name = iamgeurl2;
+		this.iamgeurl2 = iamgeurl2;
 	}
 	public synchronized void setIamgeUrl3(String iamgeurl3) {
-		this.name = iamgeurl3;
+		this.iamgeurl3 = iamgeurl3;
 	}
 	
 	
