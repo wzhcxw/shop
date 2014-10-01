@@ -32,7 +32,7 @@ public class NewsJdbcDaolmpl extends  JdbcDao implements NewsDao
 	@Override //获取文章数据，参数：uiid，seconduiid， 条数
 	public List<News> getNews(String uiid , String seconduiid ,int pagesize)
 	{
-		String sqll = "select title , content from newslisttable where 'uiid' = %s and 'seconduiid' = '%s';";
+		String sqll = "select title , content from newslisttable where uiid = %s and seconduiid = '%s';";
 		sqll = String.format(sqll, uiid , seconduiid);
 		NewsMapper newsmaper = new NewsMapper();
 		List<News> newslist = this.query( sqll, newsmaper ) ;

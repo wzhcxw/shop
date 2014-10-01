@@ -3,4 +3,5 @@
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.gaogao.bussiness.user.bo.ShangPin"/>
 <fullyQualifiedTypeName name="com.gaogao.bussiness.user.service.ShangPinService"/>
+<fullyQualifiedTypeName name="com.gaogao.bussiness.user.bo.ShangPinMapper"/>
 </qualifiedTypeNameHistroy>

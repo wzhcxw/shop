@@ -31,7 +31,18 @@
 			var jsonStr = {name:name2,shangpinid:shangpinid,price:price1,dscr:dscr1,guige:guige1,type:type1,zhongliang:zhongliang1,chandi:chandi1,iamgeurl1:image11,iamgeurl2:image22,iamgeurl3:image33};
 			jsonStr = JSON.stringify(jsonStr);
 			alert(jsonStr);
-			var  urll = "./shangpin/addshangpin.do";
+			var index = this.location.href.indexOf("?");
+			var  urll = "";
+			if(index > 0){
+			
+				urll = "./shangpin/updatashangpin.do"
+			
+			}else{
+			
+				urll = "./shangpin/addshangpin.do"
+			
+			}
+			
 			
 		    $.post(urll,jsonStr,
 		    function(data){
@@ -43,8 +54,44 @@
 		      
 		    });
 		 }
+		 
+		 function urlpser(url){
+			 
+			 	url = decodeURIComponent(url);
+				
+				var index = url.indexOf("?");
+				if(index > 0){
+					var jsonstr = url.substr(index+1);
+		
+					var shangpin = JSON.parse(jsonstr);
+					if(shangpin!== null ){
+					
+						document.getElementById("shangpinid").value = shangpin.shangpinid;
+						document.getElementById("name1").value = shangpin.name;
+						document.getElementById("price").value = shangpin.price ;
+						document.getElementById("dscr").value = shangpin.dscr ;
+						document.getElementById("guige").value = shangpin.guige ;
+						document.getElementById("type1").value = shangpin.type ;
+						document.getElementById("chandi").value = shangpin.chandi ;
+						document.getElementById("image1").value = shangpin.iamgeurl1 ;
+						document.getElementById("image2").value = shangpin.iamgeurl2 ;
+						document.getElementById("image3").value = shangpin.iamgeurl3 ;
 
+					}
 
+				}
+				else{
+					
+				
+				}
+		 
+		 
+		 }
+		
+		function pase(){
+			urlpser(this.location.href);
+		}
+		
 	</script>
 	
 	
@@ -67,7 +114,7 @@ tr{}
 .tal{text-align:right;}
 </style>
 
-<body id = "baody"  >
+<body id = "baody" onload="pase()"  >
 <table id = "table1" name = "table11" width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td width="17" valign="top" background="../admin/images/mail_leftbg.gif"><img src="../admin/images/left-top-right.gif" width="17" height="29" /></td>
@@ -91,7 +138,7 @@ tr{}
  	<table id = "table3" >
  	        <tr >
         	<td  class="tal" width="333" height="22">商 品 编 号:</td>
-           <td  class = "taa" width="655"> <input id="shangpinid" width="100"></input></td>
+           <td  class = "taa" width="655"> <input id="shangpinid" width="100">(商品编号不可修改)</input></td>
         </tr>
                 <tr>
         	<td class="tal"  height="27">商 品 名 称:</td>
