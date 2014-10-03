@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>公司简介</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="./css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/slider.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/menu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
+<script type="text/javascript" src="./js/nav.js"></script>
+<script type="text/javascript" src="./js/move-top.js"></script>
+<script type="text/javascript" src="./js/easing.js"></script>
+<script type="text/javascript" src="./js/nav-hover.js"></script>
+</head>
+<body>
+
+	<div class="main">
+		<div class="content">
+		  <div class = "section group">
+				<div class="left_frame">
+				     <div class="a_4"> <img src="./static/images/lxwm.jpg" width="240" height="77" />
+					     <span style="font-size: 14px;">北京京博石德科技有限公司</span>
+							<p>
+							<font color="#444444">电话：</font>010-57958815<br />
+							<font color="#444444">手机：</font><font color="#222222">13366767034</font><br />
+							<font color="#444444">邮件：</font><a href="mailto:jingboshide@126.com">jingboshide@126.com</a><br />
+							<font color="#444444">地址：</font>北京市海淀区中关村东路18号1号楼C-16<br />
+							上地分校：地铁十三号线-上地地铁站对面4号楼901</p>
+				      </div>
+				</div>
+				
+				
+				
+				<div class="right_frame">
+					
+					<div class="b1" style=" display:inline;">
+				        <dl class="b11">
+				          <dt><img src="/static/images/js.jpg" width="16" height="14" />就业快讯</dt>
+				          <dd><a href="/?c=news&catid=23"><img src="/static/images/more.jpg" width="32" height="12" /></a></dd>
+				        </dl>
+				                <div class="b122"><a href="/?c=news&m=view&id=156"><img src="/static/upfile/201402201036136109.jpg" width="151" height="89" /></a>
+				          <p>李宏昌 ，长江大学 ，高�<br />热烈祝贺李宏昌同学就业高德地图......</p>
+				        </div>
+				                <ul>
+				                  <li><a href="/?c=news&m=view&id=156">李宏昌 ，长江大学 ，高德地图 ，15000元</a><span>2014-02-20</span></li>
+				                    <li><a href="/?c=news&m=view&id=216">祝贺潘名同学就业于爱帮网</a><span>2014-07-24</span></li>
+				                    <li><a href="/?c=news&m=view&id=215">祝贺沈东波同学9800就职于网易</a><span>2014-07-24</span></li>
+				                    <li><a href="/?c=news&m=view&id=214">祝贺吴敏同学13000就业百度移动部</a><span>2014-07-24</span></li>
+				                    <li><a href="/?c=news&m=view&id=173">张夏 ，长春科技学院，易掌科技 ，14000元</a><span>2014-03-02</span></li>
+				                  </ul>
+				      </div>
+					
+					
+					
+				     <div class="b1" >
+				        <dl class="b11">
+				          <dt><img src="/static/images/s1.jpg" width="16" height="14" />3G企业招聘</dt>
+				          <dd><a href="/?c=news&catid=26"><img src="./static/images/more.jpg" width="32" height="12" /></a></dd>
+				        </dl>
+
+				      </div>
+				      <div class="b1" style=" display:inline;">
+				        <dl class="b11">
+				          <dt><img src="/static/images/s1.jpg" width="16" height="14" />3G行业动态</dt>
+				          <dd><a href="/?c=news&catid=21"><img src="./static/images/more.jpg" width="32" height="12" /></a></dd>
+				        </dl>
+				        <ul>
+				        	          <li><a href="/?c=news&m=view&id=203">微软正式发布iPad版Office应用软件</a><span>2014-03-28</span></li>
+				                    <li><a href="/?c=news&m=view&id=202">QQ音乐被隐藏,刘强东你知道吗</a><span>2014-03-28</span></li>
+				                    <li><a href="/?c=news&m=view&id=199">app市场圈内事 移动互联网时代来临了</a><span>2014-03-20</span></li>
+				                    <li><a href="/?c=news&m=view&id=198">移动互联网创意工厂</a><span>2014-03-20</span></li>
+				                    <li><a href="/?c=news&m=view&id=197">宝宝大战第二波</a><span>2014-03-19</span></li>
+				                    <li><a href="/?c=news&m=view&id=196">中国联通于3月18日公布了4G资费与终端策�</a><span>2014-03-19</span></li>
+				                    <li><a href="/?c=news&m=view&id=195">腾讯入股京东，3.10日公布。</a><span>2014-03-07</span></li>
+				                    <li><a href="/?c=news&m=view&id=194">苹果疯狂抢人：加速推进新iPhone、iPad</a><span>2014-03-04</span></li>
+				                    <li><a href="/?c=news&m=view&id=193">去年安卓平板份额首超iPad</a><span>2014-03-04</span></li>
+				                  </ul>
+				      </div>
+
+				
+				</div>
+
+			      
+
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+

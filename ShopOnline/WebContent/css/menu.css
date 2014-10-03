@@ -15,7 +15,7 @@ ul.dc_mm-orange{
 	font:normal 13px Arial,sans-serif;
 	padding:0;
 	position:relative;
-	width:100%;
+	width:1024px;
 }
 ul.dc_mm-orange li ul{
 	display:none;
@@ -152,69 +152,3 @@ ul.dc_mm-orange li .sub-container.non-mega li a:hover{
 	background:#CCC9C9 url(../images/drop_arrow-hover.png) no-repeat 7px 10px;
 	color:#602D8D;
 }
-
-@media only screen and (max-width:1024px) {
-	ul.dc_mm-orange li a {
-		padding:20px 24px;
-	}
-}
-@media only screen and (max-width:1024px) {
-	ul.dc_mm-orange li a {
-		padding:20px 13px;
-		font-size:14px;
-	}
-	ul.dc_mm-orange li a .dc-mega-icon {
-		right:3px;
-	}	
-}
-@media only screen and (max-width:800px) {
-  ul.dc_mm-orange li .sub li.mega-hdr {
-  	float:inherit;
-  	width:45%;
-  	height:40px;
-  }
-  ul.dc_mm-orange li .sub-container {
-		width:28%;
-	}
-  ul.dc_mm-orange li .sub-container.mega .sub {
-	padding: 5px 0px 0px 0px;
- }
- ul.dc_mm-orange li .sub li.mega-hdr a.mega-hdr-a {
- 	padding:15px 5px 5px 15px;
- 	height:20px;
- 	
- }
- }
- @media only screen and (max-width:640px) {
- 	ul.dc_mm-orange li a {
-		padding:20px 8.5px;
-		font-size:0.96em;
-	}
-	ul.dc_mm-orange li .sub li {
-		width:150px;
-	}
-	ul.dc_mm-orange li .sub-container.non-mega li {
-		width:150px;
-	}
-	ul.dc_mm-orange li a .dc-mega-icon {
-		display:none;
-	}	
- }
-  @media only screen and (max-width:480px) {
- 	ul.dc_mm-orange li a {
-		padding:20px 4.66px;
-		font-size:0.8em;
-	}
-	ul.dc_mm-orange li .sub-container {
-		padding-left:10px;
-	}
-	ul.dc_mm-orange li .sub li {
-		width:112px;
-	}
-	ul.dc_mm-orange li .sub-container.non-mega li {
-		width:112px;
-	}
-	ul.dc_mm-orange li a .dc-mega-icon {
-		display:none;
-	}	
- }
