@@ -43,8 +43,7 @@ public class NewsServicelmpl implements NewsService{
 	{
 		return newsDao.getNews(uiid, seconduiid, pagesize);
 	}
-	
-	
+
 	@Override
 	public boolean deleteNews(News title)
 	{
@@ -62,6 +61,12 @@ public class NewsServicelmpl implements NewsService{
 	{
 		return newsDao.getNewsByTitle(news);
 		
+	}
+	
+	@Override //获取前 size条数据
+	public List<News> getTopNews(String size,String seconduiid,String uiid)
+	{
+		return newsDao.getTopNews(size ,seconduiid,uiid);
 	}
 	
 

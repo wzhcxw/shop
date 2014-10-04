@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:list="http://www.springframework.org/schema/list"
+	xsi:schemaLocation="     
+           http://www.springframework.org/schema/beans     
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd     
+           http://www.springframework.org/schema/context     
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd    
+           http://www.springframework.org/schema/mvc     
+           http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+	<!-- <context:component-scan base-package="com.gaogao.web"></context:component-scan> -->
+	<import resource="classpath:applicationContext-controller.xml" />
+
+	<bean id="exceptionHandler" class="com.gaogao.common.base.ExceptionHandler" />
+	<bean id="customObjectMapper" class="com.gaogao.common.base.CustomObjectMapper" />
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" 
+		/> <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"> 
+		<property name="messageConverters"> <util:list id="beanList"> <ref bean="mappingJacksonHttpMessageConverter" 
+		/> <ref bean="stringHttpMessageConverter" /> </util:list> </property> </bean> 
+		<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"> 
+		<property name="supportedMediaTypes"> <list> <value>apolication/json; charset=UTF-8</value> 
+		</list> </property> <property name="objectMapper" ref="customObjectMapper"></property> 
+		</bean> <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter"> 
+		<property name="supportedMediaTypes"> <list> <value>text/html;charset=UTF-8</value> 
+		</list> </property> </bean> -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+				<property name="objectMapper" ref="customObjectMapper"></property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<bean class="com.gaogao.common.base.BaseInterceptor">
+			<property name="excludeControllers">
+				<util:list>
+					<value>login</value>
+					<value>register</value>
+					<value>notlogin</value>
+				</util:list>
+			</property>
+
+		</bean>
+	</mvc:interceptors>
+</beans>

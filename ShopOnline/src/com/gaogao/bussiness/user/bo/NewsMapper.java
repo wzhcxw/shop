@@ -16,6 +16,8 @@ public class NewsMapper implements RowMapper<News> {
 		news.setUiid(rs.getString("uiid"));
 		news.setContent(rs.getString("content"));
 		news.setSort(rs.getString("sort"));
+		news.setDate(rs.getString("date"));
+		news.setTitleImage(rs.getString("titleimage"));
 		return news;
 
 	}

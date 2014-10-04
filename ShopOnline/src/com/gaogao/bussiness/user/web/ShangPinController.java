@@ -76,6 +76,18 @@ public class ShangPinController extends BaseController{
 		return result;
 	}
 	
+	@RequestMapping("/gettopshangpin")
+	@ResponseBody
+	public Object gettopshangpin(HttpServletRequest request) {
+		ResultMessage result = null;
+		String size = request.getParameter("size");
+	    List<ShangPin> shangpinArray =	shangPinService.getTopShangPin(size);
+		String arr = JSON.toJSONString(shangpinArray);
+		result = ResultMessage.getSuccessResult("0", "成功");
+		result.setDatas(arr);
+		return result;
+	}
+	
 	@RequestMapping("/deleteshangpin")
 	@ResponseBody
 	public Object deletenews(HttpServletRequest request){

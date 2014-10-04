@@ -12,11 +12,16 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd"
 	default-lazy-init="false">
-	<bean id="userDao" class="com.gaogao.bussiness.user.dao.UserJdbcDaoImpl" parent="jdbcDao" />
-	<bean id="pageElementDao" class="com.gaogao.bussiness.pageelement.dao.PageElementJdbcDaoImpl" parent="jdbcDao" />
-		
-	<bean id="newsDao" class = "com.gaogao.bussiness.user.dao.NewsJdbcDaolmpl" parent="jdbcDao" />
-	<bean id="shangPinDao" class = "com.gaogao.bussiness.user.dao.ShangPinJdbcDaolmpl" parent="jdbcDao" />
-			 
+	<bean id="userDao" class="com.gaogao.bussiness.user.dao.UserJdbcDaoImpl"
+		parent="jdbcDao" />
+	<bean id="pageElementDao"
+		class="com.gaogao.bussiness.pageelement.dao.PageElementJdbcDaoImpl"
+		parent="jdbcDao" />
+
+	<bean id="newsDao" class="com.gaogao.bussiness.user.dao.NewsJdbcDaolmpl"
+		parent="jdbcDao" />
+	<bean id="shangPinDao" class="com.gaogao.bussiness.user.dao.ShangPinJdbcDaolmpl"
+		parent="jdbcDao" />
+
 
 </beans>

@@ -8,6 +8,8 @@ public class News {
 	
 	String content;
 	String sort;
+	String date;
+	String titleimage;
 	
 	/**
 	 * {"seconduiid":"newss","uiid":"home","title":"123","data":"<p>wwwwwww</p>"}
@@ -15,6 +17,9 @@ public class News {
 	 */
 	public synchronized String getTitle() {
 		return title;
+	}
+	public synchronized String getDate() {
+		return this.date;
 	}
 	public synchronized String getSeconduiid() {
 		return seconduiid;
@@ -28,6 +33,9 @@ public class News {
 	public synchronized String getSort() {
 		return sort;
 	}
+	public synchronized String getTitleImage() {
+		return titleimage;
+	}
 	
 	
 	/**
@@ -35,6 +43,9 @@ public class News {
 	 */
 	public synchronized void setTitle(String title) {
 		this.title = title;
+	}
+	public synchronized void setDate(String date) {
+		this.date = date;
 	}
 	public synchronized void setSort(String sort) {
 		this.sort = sort;
@@ -48,6 +59,8 @@ public class News {
 	public synchronized void setContent(String content) {
 		this.content = content;
 	}
-	
+	public synchronized void setTitleImage(String titleimage) {
+		this.titleimage = titleimage;
+	}
 	
 }

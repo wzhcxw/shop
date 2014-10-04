@@ -24,12 +24,12 @@ public class BaseController {
 		StringBuffer sb = new StringBuffer() ; 
 		T object = null;
 		try{
-			ServletInputStream is = request.getInputStream(); 
-			InputStreamReader isr = new InputStreamReader(is,"UTF-8");   
-			BufferedReader br = new BufferedReader(isr); 
-			String s = "" ; 
-			while((s=br.readLine())!=null){ 
-			sb.append(s) ; 
+				ServletInputStream is = request.getInputStream(); 
+				InputStreamReader isr = new InputStreamReader(is,"UTF-8");   
+				BufferedReader br = new BufferedReader(isr); 
+				String s = "" ; 
+				while((s=br.readLine())!=null){ 
+				sb.append(s) ; 
 			} 
 			String str =sb.toString(); 
 			

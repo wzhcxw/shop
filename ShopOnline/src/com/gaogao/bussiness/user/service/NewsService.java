@@ -13,4 +13,6 @@ public interface NewsService {
 	public boolean deleteNews(News title);
 	public List<News> getallNews();
 	public List<News> getNewsByTitle(News news);
+	public List<News> getTopNews(String size,String seconduiid,String uiid);
+	
 }

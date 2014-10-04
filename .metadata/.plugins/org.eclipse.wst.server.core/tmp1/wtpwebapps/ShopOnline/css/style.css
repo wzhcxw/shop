@@ -11,7 +11,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend,
 	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
 	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
-	output, ruby, section,main_frame, summary, time, mark, audio, video {
+	output, ruby, section, main_frame, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -20,56 +20,293 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	vertical-align: baseline;
 }
 
-.main_frame{
+.main_frame {
 	clear: both;
 	background: #FFF;
+}
+
+.top_frame {
+	background-color: #333333;
+	height: 200;
+	width: 1024px;
+	float: left;
+}
+
+.left_frame {
+	background-color: #fff;
+	height: auot;
+	width: 240px;
+	float: left;
+}
+
+.right_frame {
+	background-color: #fff;
+	height: auot;
+	width: 774;
+	float: left;
+	margin-left: 15px;
+}
+
+.image1_frame {
+	background-color: #fff;
+	height: auot;
+	width: 774;
+	float: left;
+	margin-left: 15px;
+	margin-top:15px;
+}
+
+.image2_frame {
+	background-color: #fff;
+	height: auot;
+	width: 774;
+	float: left;
+	margin-left: 15px;
+	margin-top:20px;
+		border: 1px solid #CCCCCC;
+}
+
+.image3_frame {
+	background-color: #fff;
+	height: auot;
+	width: 774;
+	float: left;
+	margin-left: 15px;
+	margin-top:10px;
+		border: 1px solid #CCCCCC;
+}
+
+.jiameng{
+	float:left;
+}
+.jiameng a img{
+	width:188.5px;
+	height:150px;
+}
+
+.image1_frame ui li a img{
+	width:188.5;
+	heigth:150px;
 	
 }
 
+.image1_font{
+	
+	font-family: simsun; 
+	font-size: 9pt; 
+	color: #6A6A6A;
+}
 
-.top_frame{background-color:#333333;height:200;width:1024px;float:left;}
-.left_frame{background-color:#fff;height:auot;width:240px;float:left;}
+.b1 {
+	float: left;
+	width: 370px;
+	heigth:auto;
+	border: 1px solid #CCCCCC;
+	overflow: hidden;
+	margin-bottom: 5px;
+	margin-right:10px;
+}
+
+.b11 {
+	float: left;
+	width: 370px;
+	height: 33px;
+	background: url(../static/images/bj03.jpg) repeat-x;
+}
+
+.b11 dt {
+	float: left;
+	line-height: 33px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #d81b09;
+}
+
+.b11 dt img {
+	float: left;
+	padding-top: 9px;
+	padding-left: 12px;
+	padding-right: 7px;
+}
+
+.b11 dd {
+	float: right;
+	padding-top: 13px;
+	padding-right: 6px;
+}
+
+.b1 ul {
+	float: left;
+	width: 355px;
+	height: auto;
+	overflow: hidden;
+	padding-left: 10px;
+}
+
+.b1 ul li {
+	float: left;
+	width: 365px;
+	height: 24px;
+	overflow: hidden;
+	line-height: 24px;
+}
 
 
 
-.right_frame{background-color:#fff;height:auot;width:774;float:left; margin-left:10px;}
+.b1 ul li a {
+	float: left;
+	width: 200px;
+	height: 24px;
+	font-size:12px; 
+	background: url(../static/images/dian.jpg) left center no-repeat;
+	padding-left: 10px;
+	color: #454545;
+}
 
-.b1{ float:left; width:370px; height:260px; border:1px solid #CCCCCC; overflow:hidden; margin-bottom:5px;}
-.b11{ float:left; width:365px; height:33px; background:url(../static/images/bj03.jpg) repeat-x;}
-.b11 dt{ float:left; line-height:33px; font-size:14px; font-weight:bold; color:#d81b09;}
-.b11 dt img{ float:left; padding-top:9px; padding-left:12px; padding-right:7px;}
-.b11 dd{ float:right; padding-top:13px; padding-right:6px;}
-.b1 ul{ float:left; width:355px; height:auto;overflow:hidden; padding-left:10px;}
-.b1 ul li{ float:left; width:365px; height:24px; overflow:hidden; line-height:24px;}
-.b1 ul li a{ float:left; width:255px; height:24px; background:url(../static/images/dian.jpg) left center no-repeat; padding-left:10px; color:#454545;}
-.b1 ul li span{ float:right; padding-right:12px; color:#454545;}
+.b1 ul li span {
+	float: right;
+	padding-right: 12px;
+	font-size:12px; 
+	color: #454545;
+}
 
+.b2 {
+	float: left;
+	width: 365px;
+	height: 260px;
+	border: 1px solid #CCCCCC;
+	overflow: hidden;
+}
 
+.b122 {
+	float: left;
+	width: 365px;
+	height: 89px;
+	overflow: hidden;
+	padding-top: 10px;
+}
 
-.b2{ float:left;width:365px; height:260px; border:1px solid #CCCCCC; overflow:hidden;}
+.b122 img {
+	float: left;
+	width: 151px;
+	height: 89px;
+	padding-left: 11px;
+	line-height: 180%;
+}
 
-.b122{ float:left; width:365px; height:89px; overflow:hidden; padding-top:10px;}
-.b122 img{ float:left; width:151px; height:89px;padding-left:11px; line-height:180%;}
-.b122 p{ float:left; width:180px;  overflow:hidden; line-height:180%; padding-left:5px; padding-top:7px;}
+.b122 p {
+	float: left;
+	width: 180px;
+	overflow: hidden;
+	line-height: 180%;
+	padding-left: 5px;
+	padding-top: 7px;
+}
 
-.b22{ float:left; width:365px; height:auto;}
-.b22 dl{ float:left;width:340px; min-height:58px; overflow:hidden; border-bottom:1px dashed #BEBEBE; margin-top:13px; margin-left:15px; display:inline;}
-.b22 dl dt{ float:left; width:340px;}
-.b22 dl dd{ float:left; width:340px; line-height:180%;}
+.b22 {
+	float: left;
+	width: 365px;
+	height: auto;
+}
 
-.a_4{ float:left; width:240px; height:aout; border:1px solid #DDDDDD; margin-top:0px;}
-.a_4 img{ float:left; width:240px; height:77px; overflow:hidden;}
-.a_4 span{ float:left; width:222px; font-size:14px; color:#0A76BE; padding-left:18px;}
-.a_4 p{ float:left; width:230px; height:auto; line-height:200%; color:#666666; padding-left:10px; padding-top:8px;}
+.b22 dl {
+	float: left;
+	width: 340px;
+	min-height: 58px;
+	overflow: hidden;
+	border-bottom: 1px dashed #BEBEBE;
+	margin-top: 13px;
+	margin-left: 15px;
+	display: inline;
+}
 
-.a_3{ float:left; width:240px; height:100px; overflow:hidden; border:1px solid #DDDDDD; margin-bottom:10px;}
-.a_3 dl{ float:left; width:80px; height:100px; overflow:hidden;}
-.a_3 dl dt{ float:left; width:80px; height:53px; overflow:hidden; text-align:center; padding-top:15px;}
-.a_3 dl dd{ float:left; width:80px; height:20px; overflow:hidden; text-align:center; font-size:14px; padding-top:8px;}
+.b22 dl dt {
+	float: left;
+	width: 340px;
+}
 
+.b22 dl dd {
+	float: left;
+	width: 340px;
+	line-height: 180%;
+}
+.a_1{ float:left; width:241px; font-size:12px; height:320px; border:1px solid #CCCCCC; overflow:hidden; margin-bottom:10px;}
+.a_1 span{ float:left; width:241px; height:34px; background:url(../static/images/bj03.jpg) repeat-x; line-height:34px; text-align:center; font-size:7pt; color:#7f7f7f;}
+.a_1 p{ float:left; width:216px; height:257px; overflow:hidden; padding-top:10px; padding-left:13px; line-height:210%; text-indent:25px;}
+.a_1 p img{ float:left; padding-bottom:5px;}
 
-article, main_frame, aside, details, figcaption, figure, footer, header, hgroup,
-	menu, nav, section {
+.a_4 {
+	float: left;
+	width: 240px;
+	height: aout;
+	border: 1px solid #DDDDDD;
+	margin-top: 0px;
+}
+
+.a_4 img {
+	float: left;
+	width: 240px;
+	height: 77px;
+	overflow: hidden;
+}
+
+.a_4 span {
+	float: left;
+	width: 222px;
+	font-size: 14px;
+	color: #0A76BE;
+	padding-left: 18px;
+}
+
+.a_4 p {
+	float: left;
+	width: 230px;
+	height: auto;
+	line-height: 200%;
+	color: #666666;
+	padding-left: 10px;
+	padding-top: 8px;
+}
+
+.a_3 {
+	float: left;
+	width: 240px;
+	height: 100px;
+	overflow: hidden;
+	border: 1px solid #DDDDDD;
+	margin-bottom: 10px;
+}
+
+.a_3 dl {
+	float: left;
+	width: 80px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.a_3 dl dt {
+	float: left;
+	width: 80px;
+	height: 53px;
+	overflow: hidden;
+	text-align: center;
+	padding-top: 15px;
+}
+
+.a_3 dl dd {
+	float: left;
+	width: 80px;
+	height: 20px;
+	overflow: hidden;
+	text-align: center;
+	font-size: 14px;
+	padding-top: 8px;
+}
+
+.imgbox { float:left; margin_rigth:10px;}
+
+article, main_frame, aside, details, figcaption, figure, footer, header,
+	hgroup, menu, nav, section {
 	display: block;
 }
 
@@ -168,7 +405,8 @@ body {
 }
 
 #slideshow ul img {
-	width: 1024px; -webkit-transition : all 0.5s ease;
+	width: 1024px;
+	-webkit-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
 	transition: all 0.5s ease;
@@ -621,7 +859,6 @@ button.grey:hover, .search button.grey:hover {
 	box-shadow: 0px 0px 3px rgb(150, 150, 150);
 }
 
-
 .group:before, .group:after {
 	content: "";
 	display: table;
@@ -723,6 +960,7 @@ button.grey:hover, .search button.grey:hover {
 
 .content {
 	padding: 10px 0;
+	width: 1024px;
 	background: #FFF;
 }
 
@@ -1698,12 +1936,10 @@ button.grey:hover, .search button.grey:hover {
 }
 
 .support img {
-
 	float: left;
 	margin-left: 4%;
 	margin-top: 0px;
 }
-
 
 .group:before, .group:after {
 	content: "";
@@ -1826,7 +2062,5 @@ button.grey:hover, .search button.grey:hover {
 	margin-bottom: 15px;
 }
 /**** Responsive Layout ****/
-
-
 
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */

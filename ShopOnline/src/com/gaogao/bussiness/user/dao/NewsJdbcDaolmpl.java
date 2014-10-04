@@ -15,8 +15,8 @@ public class NewsJdbcDaolmpl extends  JdbcDao implements NewsDao
 	//添加文章
 	public boolean addNews(News news)
 	{
-		 String sql = "insert into newslisttable (content,seconduiid,sort,title,uiid) values('%s','%s','%s','%s','%s');";
-		 sql = String.format(sql, news.getContent(),news.getSeconduiid(),news.getSort(),news.getTitle(),news.getUiid());
+		 String sql = "insert into newslisttable (content,seconduiid,sort,title,uiid,date,titleimage) values('%s','%s','%s','%s','%s','%s','%s');";
+		 sql = String.format(sql, news.getContent(),news.getSeconduiid(),news.getSort(),news.getTitle(),news.getUiid(),news.getDate(),news.getTitleImage());
 		return this.update(sql.toString());
 		
 	}
@@ -24,15 +24,15 @@ public class NewsJdbcDaolmpl extends  JdbcDao implements NewsDao
 	//更新文章
 	@Override
 	public boolean updateNews(News news){
-		String sqlll = "UPDATE newslisttable SET  content = '%s',sort = '%s' , uiid = '%s' , seconduiid = '%s'  where title = '%s' ;";
-		sqlll = String.format(sqlll, news.getContent(),news.getSort(),news.getUiid(), news.getSeconduiid(),news.getTitle());
+		String sqlll = "UPDATE newslisttable SET titleimage = '%s', content = '%s',sort = '%s' , uiid = '%s' , seconduiid = '%s'  where title = '%s' ;";
+		sqlll = String.format(sqlll, news.getTitleImage(),news.getContent(),news.getSort(),news.getUiid(), news.getSeconduiid(),news.getTitle());
 		return this.update(sqlll.toString());
 	}
 	
 	@Override //获取文章数据，参数：uiid，seconduiid， 条数
 	public List<News> getNews(String uiid , String seconduiid ,int pagesize)
 	{
-		String sqll = "select title , content from newslisttable where uiid = %s and seconduiid = '%s';";
+		String sqll = "select title , titleimage, content ,date from newslisttable where uiid = %s and seconduiid = '%s';";
 		sqll = String.format(sqll, uiid , seconduiid);
 		NewsMapper newsmaper = new NewsMapper();
 		List<News> newslist = this.query( sqll, newsmaper ) ;
@@ -77,6 +77,16 @@ public class NewsJdbcDaolmpl extends  JdbcDao implements NewsDao
 		sqll = String.format(sqll, str);
 		this.getJdbcTemplate().execute(sqll);
 	    return true;
+	}
+	
+	@Override //获取前 size条数据
+	public List<News> getTopNews(String size ,String seconduiid,String uiid)
+	{
+		String sqll = "select  * from newslisttable where seconduiid = '%s' and uiid ='%s' limit %s;" ;
+		sqll = String.format(sqll,seconduiid, uiid ,size);
+		NewsMapper newsmaper = new NewsMapper();
+		List<News> newslist = this.query( sqll, newsmaper ) ;
+	    return newslist;
 	}
 	
 	

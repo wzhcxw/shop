@@ -14,5 +14,6 @@ public interface NewsDao {
 	public List<News> getallNews();
 	public boolean deleteNews(News title);
 	public List<News> getNewsByTitle(News news);
+	public List<News> getTopNews(String size,String seconduiid,String uiid);
 
 }

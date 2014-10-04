@@ -20,7 +20,7 @@ public class ShangPinServicelmpl implements ShangPinService{
 		this.shangPinDao = shangpingdao;
 	}
 	
-	
+	@Override
 	public boolean addShangPin(ShangPin shangping)
 	{
 		
@@ -28,27 +28,32 @@ public class ShangPinServicelmpl implements ShangPinService{
 		return shangPinDao.addShangPin(shangping);
 		
 	}
-	
+	@Override
 	public boolean updateShangPin(ShangPin shangpin)
 	{
 		return this.shangPinDao.updateShangPin(shangpin);
 	}
-	
+	@Override
 	public List<ShangPin> getShangPin(ShangPin shangpin)
 	{
 		return this.shangPinDao.getShangPin(shangpin);
 	}
-	
+	@Override
 	public List<ShangPin> getallShangPin()
 	{
 		return this.shangPinDao.getallShangPin();
 		
 	}
-	
+	@Override
 	public boolean deleteShangPin(ShangPin shangpin)
 	{
 		return this.shangPinDao.deleteShangPin(shangpin);
 		
+	}
+	@Override
+	public List<ShangPin> getTopShangPin(String size)
+	{
+		return this.shangPinDao.getTopShangPin(size);
 	}
 	
 

@@ -13,5 +13,6 @@ public interface ShangPinService {
 	public List<ShangPin> getallShangPin();
 	
 	public boolean deleteShangPin(ShangPin shangpin);
+	public List<ShangPin> getTopShangPin(String size);
 
 }

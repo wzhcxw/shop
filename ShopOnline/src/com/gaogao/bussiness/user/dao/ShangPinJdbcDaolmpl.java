@@ -10,7 +10,7 @@ import com.gaogao.common.base.JdbcDao;
 
 public class ShangPinJdbcDaolmpl extends  JdbcDao implements ShangPinDao{
 	
-	
+	@Override
 	public boolean addShangPin(ShangPin shangping)
 	{
 
@@ -19,7 +19,7 @@ public class ShangPinJdbcDaolmpl extends  JdbcDao implements ShangPinDao{
 		 return this.update(sql.toString());
 		
 	}
-	
+	@Override
 	public boolean updateShangPin(ShangPin shangping)
 	{
 
@@ -27,7 +27,7 @@ public class ShangPinJdbcDaolmpl extends  JdbcDao implements ShangPinDao{
 		sqlll = String.format(sqlll, shangping.getName(),shangping.getPrice(),shangping.getDscr(),shangping.getGuige(),shangping.getType(),shangping.getZhongLiang(),shangping.getChandi(),shangping.getIamgeUrl1(),shangping.getIamgeUrl2(),shangping.getIamgeUrl3(),shangping.getShangPinid());
 		return this.update(sqlll.toString());
 	}
-	
+	@Override
 	public List<ShangPin> getShangPin(ShangPin shangpin)
 	{
 		String sqll = "select * from sku where shangpinid = %s ;";
@@ -36,17 +36,16 @@ public class ShangPinJdbcDaolmpl extends  JdbcDao implements ShangPinDao{
 		List<ShangPin> newslist = this.query( sqll, newsmaper ) ;
 	    return newslist;
 	}
-	
+	@Override
 	public List<ShangPin> getallShangPin()
 	{
 		String sqll = "select *  from sku;";
-
 		ShangPinMapper shangpinmaper = new ShangPinMapper();
 		List<ShangPin> shangpinlist = this.query( sqll, shangpinmaper ) ;
 	    return shangpinlist;
 		
 	}
-	
+	@Override
 	public boolean deleteShangPin(ShangPin shangpin)
 	{
 		String sqll = "DELETE FROM sku WHERE shangpinid='%s';";
@@ -56,5 +55,14 @@ public class ShangPinJdbcDaolmpl extends  JdbcDao implements ShangPinDao{
 		this.getJdbcTemplate().execute(sqll);
 	    return true;
 		
+	}
+	@Override
+	public List<ShangPin> getTopShangPin(String size)
+	{
+		String sqll = "select  * from sku  limit %s;" ;
+		sqll = String.format(sqll, size);
+		ShangPinMapper shangpinmaper = new ShangPinMapper();
+		List<ShangPin> shangpinlist = this.query( sqll, shangpinmaper ) ;
+	    return shangpinlist;
 	}
 }

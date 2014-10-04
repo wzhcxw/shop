@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>公司简介</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="./css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/slider.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/menu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
+<script type="text/javascript" src="./js/nav.js"></script>
+<script type="text/javascript" src="./js/move-top.js"></script>
+<script type="text/javascript" src="./js/easing.js"></script>
+<script type="text/javascript" src="./js/nav-hover.js"></script>
+</head>
+<body>
+	<div class="header_bottom">
+		<div id="slideshow">
+			<ul class="slides">
+				<li><a href="preview.html"><img src="./images/1.jpg"
+						alt="Marsa Alam underawter close up" height="342px" /></a></li>
+				<li><a href="preview-2.html"><img src="./images/2.jpg"
+						alt="Turrimetta Beach - Dawn" height="342px" /></a></li>
+				<li><a href="preview-6.html"><img src="./images/3.jpg"
+						alt="Power Station" height="342px" /></a></li>
+				<li><a href="preview-3.html"><img src="./images/4.jpg"
+						alt="Colors of Nature" height="342px" /></a></li>
+			</ul>
+			<span class="arrow previous"></span> <span class="arrow next"></span>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="main">
+		<div class="content">
+			<div class="section group">
+
+
+				<div class="left_frame">
+
+					<div class="a_1">
+						<span> 京博石德简介 </span>
+						<p>
+							<img src="./static/images/xx1.jpg" width="216" height="102" />
+							北京京博石德科技有限责任公司3G研发中心，最具技术实力的3G跨平台（IOS、Android、Windows
+							Phone、Linux、Web OS）智能移动研发中心..
+						</p>
+					</div>
+					<div class="a_3">
+						<dl>
+							<dt>
+								<a href="/?c=message"><img src="./static/images/a1.jpg"
+									width="44" height="53" /></a>
+							</dt>
+							<dd>
+								<a href="/?c=message">新手指南</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="/?c=message"><img src="./static/images/a2.jpg"
+									width="44" height="53" /></a>
+							</dt>
+							<dd>
+								<a href="/?c=message">如何加盟</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="/?c=message"><img src="./static/images/a3.jpg"
+									width="44" height="53" /></a>
+							</dt>
+							<dd>
+								<a href="/?c=message">邮件我们</a>
+							</dd>
+						</dl>
+					</div>
+
+					<div class="a_4">
+						<img src="./static/images/lxwm.jpg" height="77" /> <span
+							style="font-size: 14px;">北京京博石德科技有限公司</span>
+						<p>
+							<font color="#444444">电话：</font>010-57958815<br /> <font
+								color="#444444">手机：</font><font color="#222222">13366767034</font><br />
+							<font color="#444444">邮件：</font><a
+								href="mailto:jingboshide@126.com">jingboshide@126.com</a><br />
+							<font color="#444444">地址：</font>北京市海淀区中关村东路18号1号楼C-16<br />
+							上地分校：地铁十三号线-上地地铁站对面4号楼901
+						</p>
+					</div>
+				</div>
+
+				<div class="right_frame">
+					<div class="b1">
+						<dl class="b11">
+							<dt>
+								<img src="./static/images/s1.jpg" width="16" height="14" />企业新闻
+							</dt>
+							<dd>
+								<a href="/?c=news&catid=26"><img
+									src="./static/images/more.jpg" width="32" height="12" /></a>
+							</dd>
+						</dl>
+						<ul>
+							<li><a href="/?c=news&m=view&id=217">北京爱帮网来京博石德招聘</a><span>2014-07-24</span></li>
+							<li><a href="/?c=news&m=view&id=202">QQ音乐被隐藏,刘强东你知道吗</a><span>2014-03-28</span></li>
+							<li><a href="/?c=news&m=view&id=199">app市场圈内事 移动互联网时代来临了</a><span>2014-03-20</span></li>
+							<li><a href="/?c=news&m=view&id=198">移动互联网创意工厂</a><span>2014-03-20</span></li>
+							<li><a href="/?c=news&m=view&id=197">宝宝大战第二波</a><span>2014-03-19</span></li>
+							<li><a href="/?c=news&m=view&id=196">中国联通于3月18日公布了4G资费与终端策�</a><span>2014-03-19</span></li>
+							<li><a href="/?c=news&m=view&id=195">腾讯入股京东，3.10日公布。</a><span>2014-03-07</span></li>
+							<li><a href="/?c=news&m=view&id=194">苹果疯狂抢人：加速推进新iPhone、iPad</a><span>2014-03-04</span></li>
+							<li><a href="/?c=news&m=view&id=193">去年安卓平板份额首超iPad</a><span>2014-03-04</span></li>
+
+						</ul>
+					</div>
+
+
+					<div class="b1" style="margin-left: 11px; display: inline;">
+						<dl class="b11">
+							<dt>
+								<img src="./static/images/s1.jpg" width="16" height="14" />行业动态
+							</dt>
+							<dd>
+								<a href="/?c=news&catid=21"><img
+									src="./static/images/more.jpg" width="32" height="12" /></a>
+							</dd>
+						</dl>
+						<ul>
+							<li><a href="/?c=news&m=view&id=203">微软正式发布iPad版Office应用软件</a><span>2014-03-28</span></li>
+							<li><a href="/?c=news&m=view&id=202">QQ音乐被隐藏,刘强东你知道吗</a><span>2014-03-28</span></li>
+							<li><a href="/?c=news&m=view&id=199">app市场圈内事 移动互联网时代来临了</a><span>2014-03-20</span></li>
+							<li><a href="/?c=news&m=view&id=198">移动互联网创意工厂</a><span>2014-03-20</span></li>
+							<li><a href="/?c=news&m=view&id=197">宝宝大战第二波</a><span>2014-03-19</span></li>
+							<li><a href="/?c=news&m=view&id=196">中国联通于3月18日公布了4G资费与终端策�</a><span>2014-03-19</span></li>
+							<li><a href="/?c=news&m=view&id=195">腾讯入股京东，3.10日公布。</a><span>2014-03-07</span></li>
+							<li><a href="/?c=news&m=view&id=194">苹果疯狂抢人：加速推进新iPhone、iPad</a><span>2014-03-04</span></li>
+							<li><a href="/?c=news&m=view&id=193">去年安卓平板份额首超iPad</a><span>2014-03-04</span></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="image1_frame">
+
+					<div class="imgbox">
+						<a
+							href='http://duomeihan.com/data/file/grp0201/2093864767_ify9MecQ_img01.jpg'><img
+							src="http://duomeihan.com/data/file/grp0201/2093864767_ify9MecQ_img01.jpg"
+							width="188.5" height="150" border="1"></a>
+						<div class="subject">
+							<a href='./bbs/board.php?bo_table=grp0201&wr_id=35'><font
+								class="image1_font">新麦斯炭原味益生菌酸奶粉</font></a>
+						</div>
+					</div>
+					<div class="imgbox">
+						<a
+							href='http://duomeihan.com/data/file/grp0201/2093864767_ify9MecQ_img01.jpg'><img
+							src="http://duomeihan.com/data/file/grp0201/2093864767_ify9MecQ_img01.jpg"
+							width="188.5" height="150" border="1"></a>
+						<div class="subject">
+							<a href='./bbs/board.php?bo_table=grp0201&wr_id=35'><font
+								class="image1_font">新麦斯炭原味益生菌酸奶粉</font></a>
+						</div>
+					</div>
+					<div class="imgbox">
+						<a
+							href='http://duomeihan.com/data/file/grp0201/2093864767_ify9MecQ_img01.jpg'><img
+							src="http://duomeihan.com/data/file/grp0201/2093864767_ify9MecQ_img01.jpg"
+							width="188.5" height="150" border="1"></a>
+						<div class="subject">
+							<a href='./bbs/board.php?bo_table=grp0201&wr_id=35'><font
+								class="image1_font">新麦斯炭原味益生菌酸奶粉</font></a>
+						</div>
+					</div>
+					<div class="imgbox">
+						<a
+							href='http://duomeihan.com/data/file/grp0201/2093864767_ify9MecQ_img01.jpg'><img
+							src="http://duomeihan.com/data/file/grp0201/2093864767_ify9MecQ_img01.jpg"
+							width="188.5" height="150" border="1"></a>
+						<div class="subject">
+							<a href='./bbs/board.php?bo_table=grp0201&wr_id=35'><font
+								class="image1_font">新麦斯炭原味益生菌酸奶粉</font></a>
+						</div>
+					</div>
+				</div>
+				
+				<div class = "image2_frame" >
+				  <div class="ad"><a href=""><img src="http://mobile1230.com/static/upfile/201402200851215610.jpg" width="370" height="110" style=" margin-right:11px;" /></a><a href=""><img src="http://mobile1230.com/static/upfile/201402200851215610.jpg" width="370" height="110" /></a></div>
+				
+				</div>
+				
+				<div class = "image3_frame"  >
+				  <dt>加盟实体店</dt>
+				
+				</div>
+				
+
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+

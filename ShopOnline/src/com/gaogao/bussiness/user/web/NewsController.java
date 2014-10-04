@@ -106,6 +106,22 @@ public class NewsController extends BaseController{
 		
 	}
 	
+	@RequestMapping("/gettopnews")
+	@ResponseBody
+	public Object getTopNews(HttpServletRequest request){
+		ResultMessage result = null;
+		String size = request.getParameter("size");
+		String seconduiid = request.getParameter("seconduiid");
+		String uiid = request.getParameter("uiid");
+		
+	    List<News> newsArray =	newsService.getTopNews(size,seconduiid,uiid);
+		String arr = JSON.toJSONString(newsArray);
+		result = ResultMessage.getSuccessResult("0", "成功");
+		result.setDatas(arr);
+		return result;
+		
+	}
+	
 	@RequestMapping("/getnewsbytitle")
 	@ResponseBody
 	public Object getNewsByTitle(HttpServletRequest request){
