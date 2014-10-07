@@ -47,6 +47,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	margin-left: 15px;
 }
 
+.NewsListView_right_frame{
+	background-color: #fff;
+	height: auot;
+	width: 774;
+	float: left;
+	margin-left: 15px;
+}
+
 .image1_frame {
 	background-color: #fff;
 	height: auot;
@@ -74,6 +82,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	margin-left: 15px;
 	margin-top:10px;
 		border: 1px solid #CCCCCC;
+}
+
+
+
+.mainablut{
+	height:auot;
+	overflow-x : hidden;
+	overflow-y : hidden;
+	width:1024px;
+	background:#FFFFFF;
 }
 
 .jiameng{
@@ -113,6 +131,80 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	height: 33px;
 	background: url(../static/images/bj03.jpg) repeat-x;
 }
+.newslist_b1 {
+	float: left;
+	width: 700px;
+	heigth:auto;
+	border: 1px solid #CCCCCC;
+	overflow: hidden;
+	margin-bottom: 5px;
+	margin-right:10px;
+}
+
+.newslist_b11 {
+
+	background: url(../static/images/loaction.jpg) no-repeat;
+	background-size:cover£»
+	float:left; width:733px; height:34px;  line-height:34px; padding-left:36px;
+}
+
+.newstitle{
+	text-align:center;
+	margin-top:40px;
+	margin-bottom:10px;
+	
+}
+.newsdata{
+	width:740px;
+	margin-top:25px;
+	margin-bottom:10px;
+}
+
+.news_hr{
+	margin-right:30px;
+}
+
+.newslist_ui{
+	width:740px;
+	margin-top:40px;
+	
+}
+
+.danli{
+
+	height:38px;
+	border-top:1px solid #ddd; 
+	background-color:#fafafa; 
+	padding:10px 0px 0px 0px;
+	font-size:14px;
+	color: #000000;
+	
+}
+
+.shuangli{
+	height:38px;
+	background-color:#ffffff; 
+	border-top:1px solid #ddd; 
+	padding:10px 0px 0px 0px;
+	font-size:14px;
+	color: #000000;
+}
+
+.newsuilisanp{
+	margin-right:10px;
+	float:right;
+}
+
+.danlianjie{
+	
+	margin-left:15px;
+	
+}
+.shuanglianjie{
+	margin-right:15px;
+}
+
+
 
 .b11 dt {
 	float: left;
@@ -250,22 +342,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	overflow: hidden;
 }
 
-.a_4 span {
-	float: left;
-	width: 222px;
-	font-size: 14px;
-	color: #0A76BE;
-	padding-left: 18px;
-}
-
 .a_4 p {
 	float: left;
 	width: 230px;
+	font-size: 12px;
 	height: auto;
 	line-height: 200%;
 	color: #666666;
-	padding-left: 10px;
-	padding-top: 8px;
+	padding-right:10px;
+	padding-left:10px;
 }
 
 .a_3 {
@@ -2064,3 +2149,6 @@ button.grey:hover, .search button.grey:hover {
 /**** Responsive Layout ****/
 
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+.right_bm{ float:right; width:754px; height:auto;}
+.loaction{ float:left; width:718px; height:34px; background:url(./static/images/loaction.jpg) no-repeat; line-height:34px; padding-left:36px;}
+.loaction a{ color:#666666;}

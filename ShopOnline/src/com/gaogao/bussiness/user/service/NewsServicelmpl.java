@@ -39,7 +39,7 @@ public class NewsServicelmpl implements NewsService{
 	}
 	
 	@Override
-	public List<News> getNews(String uiid , String seconduiid,int pagesize)
+	public List<News> getNews(String uiid , String seconduiid,String pagesize)
 	{
 		return newsDao.getNews(uiid, seconduiid, pagesize);
 	}
@@ -57,9 +57,9 @@ public class NewsServicelmpl implements NewsService{
 		
 	}
 	@Override
-	public List<News> getNewsByTitle(News news)
+	public List<News> getNewsByTitle(String title)
 	{
-		return newsDao.getNewsByTitle(news);
+		return newsDao.getNewsByTitle(title);
 		
 	}
 	

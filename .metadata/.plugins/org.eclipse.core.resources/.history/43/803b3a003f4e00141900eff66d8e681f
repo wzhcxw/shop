@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>文章详情</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="./css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/slider.css" rel="stylesheet" type="text/css"
+	media="all" />
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
+<script type="text/javascript"  src="./js/jsbase64.js"></script>
+<script type="text/javascript"  src="./js/json.js"></script>
+
+
+<script>
+	
+	function loaddata(){
+		getLianXiWoMan("homelianxiwomen");
+	    getLianXiWoMan("homegongsijianjie");
+	    paserurl();
+
+
+	}
+	
+	function getParameterValue(name){
+			var value="";
+			var	url = decodeURIComponent(this.location.href);
+			var position=url.indexOf("?");
+			var parameterStr=url.substr(position+1);//Get the string after ?
+			var arr=parameterStr.split("&");
+			for(i=0;i<arr.length;i++){
+			var parameter=arr[i].split("=");
+			if(parameter[0]==name){
+			value=parameter[1];
+			}
+		}
+		return value;
+	}
+	
+	function paserurl(){
+			
+		  	var title = getParameterValue("title");
+		  	var si = getParameterValue("seconduiid");
+		  	var sii = getParameterValue("uiid");
+		  	
+		  	var idd;
+
+		  	if(si =="sucessexample"){
+		  		idd="加盟案例";
+		  	}
+		  	else if(si == "news"){
+		  		idd="新闻中心";
+		  	}
+		  	else if(si == "newss" ){
+		  		idd = "企业新闻";
+		  	}
+		  	else if( si =="hangyedongtai"){
+		  		idd = "行业动态";
+		  	}
+			
+		  	var titledt = document.getElementById("titledt");
+			titledt.innerHTML = '首页--'+idd;
+			
+		  	
+	}
+	
+		function getnewsbytitle(title){
+			var url='./admin/news/getnewsbytitle.do?title='+title;
+			$.get(url,function(data){
+		      if(data.flag == "0"){
+			        var array = JSON.parse(data.datas);
+					if(array.length > 0){
+				        var base64 = new Base64();  
+				        var srccontent = array[0].content;
+				        srccontent = srccontent.replace('_', '+');
+	        			srccontent = srccontent.replace('-', '/');
+	        			var srccontent = base64.decode(srccontent);
+	        			alert(srccontent);
+						var divvv = document.getElementById("NewslistView_right_frame");
+						var dll = document.createElement("dl");
+						dll.className = "newslist_b11";
+						
+						var dtt = document.createElement("dt");
+						dtt.id = "titledt";
+						dll.appendChild(dtt);
+						
+						divvv.appendChild(dll);
+						var divv = document.createElement("div");
+						divv.className = "newstitle";
+						divv.innerHTML = title;
+						divvv.appendChild(divv);
+						alert("1");
+						var HR = document.createElement("HR");
+						HR.className = "news_hr";
+						divvv.appendChild(HR);
+						
+						var div = document.createElement("div");
+						div.className = "newsdata";
+						div.innerHTML = srccontent;
+						divvv.appendChild(div);
+					}
+		      }
+		    });
+		}
+
+
+	function getLianXiWoMan(title){
+		    var url='./admin/news/getnewsbytitle.do?title='+title;
+	    	$.get(url,function(data) {
+			if(data.flag=='0'){
+				
+				var array = JSON.parse(data.datas);
+		        var base64 = new Base64();  
+		        var srccontent = array[0].content;
+		        srccontent = srccontent.replace('_', '+');
+    			srccontent = srccontent.replace('-', '/');
+    			var srccontent = base64.decode(srccontent);
+    			var str = "homegongsijianjie";
+    			if(title ==str){
+    				document.getElementById('gongsijianjie').innerHTML = "<span> 韩国进口公司简介 </span>"+srccontent; 
+    			}
+    			else{
+    				document.getElementById('lianxiwomen').innerHTML = srccontent; 
+    			
+    			}
+    			 IFrameResize();
+			}
+		});
+
+	 }
+		  
+		  function IFrameResize(){  
+			 var obj = parent.document.getElementById("main_iframe");  //取得父页面IFrame对象  
+			 //弹出父页面中IFrame中设置的高度  
+			 obj.height = this.document.body.scrollHeight ;  //调整父页面中IFrame的高度为此页面的高度 
+	
+		  }
+		  
+
+
+</script>
+
+</head>
+<body onload="loaddata()" id = "body"  >
+		<div class="main">
+			<div class="content">
+			<div class="section group">
+				<div class="left_frame">
+					<div class="a_1" id="gongsijianjie">
+					</div>
+					<div class="a_4">
+						<img src="./static/images/lxwm.jpg" height="77" />
+						<div id = "lianxiwomen">
+						</div>
+					</div>
+				</div>
+
+				<div class="NewsListView_right_frame" id="NewslistView_right_frame"></div>
+
+				
+			</div>
+  		</div>
+  	</div>
+
+  		
+</body>
+</html>
+

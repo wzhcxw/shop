@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>在线商城</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="./css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/slider.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/menu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./js/nav.js"></script>
+<script type="text/javascript" src="./js/move-top.js"></script>
+<script type="text/javascript" src="./js/easing.js"></script>
+<script type="text/javascript" src="./js/nav-hover.js"></script>
+<script type="text/javascript">
+	$(document).ready(function($) {
+		$('#dc_mega-menu-orange').dcMegaMenu({
+			rowItems : '4',
+			speed : 'fast',
+			effect : 'fade'
+		});
+		$("#main_iframe").attr("src", "about.html");
+		//$("#main_iframe").load(function() {
+	
+		//var mainheight = $(this).contents().find("body").height() + 30+200;
+		//$(this).height(height);
+
+		//});
+
+	});
+
+	function switchContent(id) {
+		var url = "index-product.html";
+		switch (id) {
+		case "mallOnLine":
+			url = "shopOnline.html";
+			break;
+		case "introduction":
+			url = "about.html";
+			break;
+		case "contactUs":
+			url = "contact.html";
+			break;
+		case "faqs":
+			url = "faq.html";
+			break;
+		}
+		$("#main_iframe").attr("src", url);
+	}
+	
+	
+</script>
+
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_top">
+				<div class="logo">
+					<a href="index.html"><img src="./images/logo.png" alt="" /></a>
+				</div>
+				<div class="header_top_right">
+					<div class="search_box">
+						<form>
+							<input type="text" value="搜索你想要的产品" onfocus="this.value = '';"
+								onblur="if (this.value == '') {this.value = '搜索你想要的产品';}"><input
+								type="submit" value="搜索">
+						</form>
+					</div>
+					<div class="shopping_cart">
+						<div class="cart">
+							<a href="#" title="查看我的购物车" rel="nofollow"> <strong
+								class="opencart"> </strong> <span class="cart_title">购物车</span>
+								<span class="no_product">(empty)</span>
+							</a>
+						</div>
+					</div>
+					<div class="login">
+						<span><a href="login.html"><img
+								src="./images/login.png" alt="" title="登录" /></a></span>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="menu">
+				<ul id="dc_mega-menu-orange" class="dc_mm-orange">
+					<li><a id="introduction" href="#"
+						onclick="switchContent(this.id)">网站首页</a></li>
+					<li><a id="newscenter" href="#">新闻中心</a>
+					<li><a href="#">成功案例</a></li>
+					<li><a id="mallOnLine" href="#"
+						onclick="switchContent(this.id)">在线商城</a></li>
+					<li><a id="faqs" href="#" onclick="switchContent(this.id)">常见问题</a></li>
+					<li><a id="contactUs" href="#"
+						onclick="switchContent(this.id)">联系我们</a></li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+		</div>
+
+		<iframe id="main_iframe"  width="1024px"></iframe>
+
+		<div class="footer">
+			<div class="section group">
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>信息</h4>
+					<ul>
+						<li><a href="#">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>选择我们的理由</h4>
+					<ul>
+						<li><a href="about.html">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>我的账户</h4>
+					<ul>
+						<li><a href="contact.html">登录</a></li>
+					</ul>
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>联系方式</h4>
+					<ul>
+						<li><a href="#">+91-123-456789</a></li>
+						<li><a href="#">+00-123-000000</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="copy_right">
+				<p>我的公司 ©版权所有</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			 */
+
+			$().UItoTop({
+				easingType : 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"><span
+		id="toTopHover" style="opacity: 1;"></span></a>
+</body>
+</html>

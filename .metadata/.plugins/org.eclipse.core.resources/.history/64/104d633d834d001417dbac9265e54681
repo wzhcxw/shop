@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>新闻中心</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="./css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/slider.css" rel="stylesheet" type="text/css"
+	media="all" />
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
+<script type="text/javascript"  src="./js/jsbase64.js"></script>
+<script type="text/javascript"  src="./js/json.js"></script>
+
+
+<script>
+	
+	function loaddata(){
+	    paserurl();
+	    getLianXiWoMan("homelianxiwomen");
+	    getLianXiWoMan("homegongsijianjie");
+
+	}
+	
+	function getParameterValue(name){
+			var value="";
+			var url=location.href;
+			var position=url.indexOf("?");
+			var parameterStr=url.substr(position+1);//Get the string after ?
+			var arr=parameterStr.split("&");
+			for(i=0;i<arr.length;i++){
+			var parameter=arr[i].split("=");
+			
+			if(parameter[0]==name){
+			value=parameter[1];
+			
+			}
+		}
+		return value;
+	}
+	
+	function paserurl(){
+		  	var	url = decodeURIComponent(this.location.href);
+
+		  	var si = getParameterValue("seconduiid");
+		  	var sii = getParameterValue("uiid");
+		  	var idd;
+
+		  	if(si =="sucessexample"){
+		  		idd="加盟案例"
+		  	}
+		  	else{
+		  		idd="新闻中心"
+		  	}
+			alert("0");
+		  	var titledt = document.getElementById("titledt");
+		  	alert("1");
+			titledt.innerHTML = "<a  href=''>"+首页--"</a>" + "<a  href=''>"+idd"</a>;
+			alert("2");
+			getnews(sii,si);
+		  	
+	}
+
+
+	function getLianXiWoMan(title){
+		    var url='./admin/news/getnewsbytitle.do?title='+title;
+	    	$.get(url,function(data) {
+			if(data.flag=='0'){
+				
+				var array = JSON.parse(data.datas);
+		        var base64 = new Base64();  
+		        var srccontent = array[0].content;
+		        srccontent = srccontent.replace('_', '+');
+    			srccontent = srccontent.replace('-', '/');
+    			var srccontent = base64.decode(srccontent);
+    			var str = "homegongsijianjie";
+    			if(title ==str){
+    				document.getElementById('gongsijianjie').innerHTML = "<span> 韩国进口公司简介 </span>"+srccontent; 
+    			}
+    			else{
+    				document.getElementById('lianxiwomen').innerHTML = srccontent; 
+    			
+    			}
+    			 IFrameResize();
+			}
+		});
+
+	 }
+		  
+		  function IFrameResize(){  
+			 var obj = parent.document.getElementById("main_iframe");  //取得父页面IFrame对象  
+			 //弹出父页面中IFrame中设置的高度  
+			 obj.height = this.document.body.scrollHeight ;  //调整父页面中IFrame的高度为此页面的高度 
+	
+		  }
+		  
+	function getnews(uiid,seconduiid){
+	alert(uiid);alert(seconduiid);
+		var url='./admin/news/getnews.do?uiid=' + uiid +'&'+'seconduiid=' + seconduiid +'&size=10';
+		alert(url);
+		$.get(url,function(data) {
+			if(data.flag=='0'){
+				var array = JSON.parse(data.datas);
+				var ui =document.getElementById("newslist_ui");
+				for(var i = 0 ; i < array.length;i++)
+				{
+						  var li= document.createElement("li");
+						  var html;
+						  if(i%2==0){
+						  	html = "<a class ='danlianjie' href=''>"+array[i].title+"</a><span class = 'newsuilisanp'>" +'admin&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'+array[i].date+'</span>';
+						    li.className = "shuangli";
+						  }else{
+						  
+						  //<a class="danlianjie" href="/?c=news&m=view&id=155">郑州宇胜科技京博石德招聘</a><span class = "newsuilisanp">admin&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2014-02-20</span>
+						    li.className = "danli";
+ 						  	html = "<a class ='danlianjie' href=''>"+array[i].title+"</a><span class = 'newsuilisanp'>" +'admin&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'+array[i].date+'</span>';
+ 						  	
+						  }
+						  
+  						  li.innerHTML = html;
+						  ui.appendChild(li);
+				}
+				IFrameResize();
+			}
+		});
+	}  
+
+</script>
+
+</head>
+<body onload="loaddata()" id = "body"  >
+		<div class="main">
+			<div class="content">
+			<div class="section group">
+				<div class="left_frame">
+					<div class="a_1" id="gongsijianjie">
+					</div>
+					<div class="a_4">
+						<img src="./static/images/lxwm.jpg" height="77" />
+						<div id = "lianxiwomen">
+						</div>
+					</div>
+				</div>
+
+				<div class="NewsListView_right_frame">
+					<div class="newslistb1">
+						<dl class="newslist_b11">
+							<dt id="titledt" >
+								
+							</dt>
+						</dl>
+				      <ul class = "newslist_ui" id="newslist_ui" >
+			          </ul>
+					</div>
+		</div>
+	</div>
+  </div>
+  		
+</body>
+</html>
+

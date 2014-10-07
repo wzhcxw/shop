@@ -24,9 +24,12 @@
 		});
 		$("#main_iframe").attr("src", "about.html");
 		$("#main_iframe").load(function() {
-			var mainheight = $(this).contents().find("body").height() + 30;
-			$(this).height(mainheight);
+	
+		var mainheight = $(this).contents().find("body").height() + 30;
+		$(this).height(height);
+
 		});
+
 	});
 
 	function switchContent(id) {
@@ -44,14 +47,23 @@
 		case "faqs":
 			url = "faq.html";
 			break;
+		case "newscenter":
+			url = 'NewsListView.html?uiid=news&seconduiid=news&pagetitle=news&home=home';
+			break;
+		case "sucessful":
+			url ='NewsListView.html?uiid=sucessexample&seconduiid=sucessexample&pagetitle=sucessexample&home=home';
+			break;
 		}
+		document.getElementById("main_iframe").height = 500;
 		$("#main_iframe").attr("src", url);
 	}
+	
+	
 </script>
 
 </head>
-<body>
-	<div class="wrap">
+<body class ="homebody" id="homebody">
+	<div id="home_wrap" class="wrap">
 		<div class="header">
 			<div class="header_top">
 				<div class="logo">
@@ -83,23 +95,18 @@
 			</div>
 			<div class="menu">
 				<ul id="dc_mega-menu-orange" class="dc_mm-orange">
-					<li><a id="introduction" href="#"
-						onclick="switchContent(this.id)">网站首页</a></li>
-					<li><a href="#">新闻中心</a>
-					<li><a href="#">成功案例</a></li>
-					<li><a id="mallOnLine" href="#"
-						onclick="switchContent(this.id)">在线商城</a></li>
+					<li><a id="introduction" href="#"onclick="switchContent(this.id)">网站首页</a></li>
+					<li><a id="newscenter" onclick="switchContent(this.id)" href="#">新闻中心</a>
+					<li><a id="sucessful"  onclick="switchContent(this.id)" href="#">加盟案例</a>
+					<li><a id="mallOnLine" href="#" onclick="switchContent(this.id)">在线商城</a></li>
 					<li><a id="faqs" href="#" onclick="switchContent(this.id)">常见问题</a></li>
-					<li><a id="contactUs" href="#"
-						onclick="switchContent(this.id)">联系我们</a></li>
+					<li><a id="contactUs" href="#" onclick="switchContent(this.id)">联系我们</a></li>
 					<div class="clear"></div>
 				</ul>
 			</div>
 		</div>
 
-		<iframe id="main_iframe" width="1024px"></iframe>
-
-
+		<iframe id="main_iframe"  width="1024px"></iframe>
 
 		<div class="footer">
 			<div class="section group">
@@ -155,4 +162,3 @@
 		id="toTopHover" style="opacity: 1;"></span></a>
 </body>
 </html>
-

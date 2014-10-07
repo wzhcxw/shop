@@ -82,9 +82,11 @@ public class NewsController extends BaseController{
 	@ResponseBody
 	public Object getNews(HttpServletRequest request){
 		ResultMessage result = null;
-		News news = this.getParametersObject(request, News.class);
+		String size = request.getParameter("size");
+		String seconduiid = request.getParameter("seconduiid");
+		String uiid = request.getParameter("uiid");
 		
-	    List<News> newsArray =	newsService.getNews(news.getUiid(), news.getSeconduiid(), 20);
+	    List<News> newsArray =	newsService.getNews(uiid, seconduiid, size);
 		String arr = JSON.toJSONString(newsArray);
 		result = ResultMessage.getSuccessResult("0", "成功");
 		result.setDatas(arr);
@@ -126,9 +128,9 @@ public class NewsController extends BaseController{
 	@ResponseBody
 	public Object getNewsByTitle(HttpServletRequest request){
 		ResultMessage result = null;
-		News news = this.getPostDataToObject(request, News.class);
 		
-	    List<News> newsArray =	newsService.getNewsByTitle(news);
+		String title = request.getParameter("title");		
+	    List<News> newsArray =	newsService.getNewsByTitle(title);
 		String arr = JSON.toJSONString(newsArray);
 		result = ResultMessage.getSuccessResult("0", "成功");
 		result.setDatas(arr);

@@ -41,8 +41,6 @@
 	        var mydate = new Date();
 	        
 	        var datee =mydate.toLocaleDateString();
-	        
-	        alert(datee);
 
 			var jsonStr = {seconduiid:seconduiid,sort:sortvalue,date:datee,titleimage:titleimagevalue,uiid:uiid,title:titleValue,content:srccontent};
 			jsonStr = JSON.stringify(jsonStr);
@@ -93,16 +91,16 @@
 			}
 
 		}
+		
 		function init(news){
-			var jsonStr = {seconduiid:"d",sort:"d",uiid:"d",title:news.title,content:"d"};
-			jsonStr = JSON.stringify(jsonStr);
-			$.post("./news/getnewsbytitle.do",jsonStr,
-		    function(data){
+			var url='./news/getnewsbytitle.do?title='+news.title;
+			$.get(url,function(data){
 		      if(data.flag == "0"){
 			        var array = JSON.parse(data.datas);
 					if(array.length > 0){
 						
 						document.getElementById("title").value = array[0].title;
+						document.getElementById("titleimage").value = array[0].titleImage;
 						document.getElementById("sort").value = array[0].sort;
 				        var base64 = new Base64();  
 				        var srccontent = array[0].content;
@@ -114,10 +112,7 @@
 	        			editor.setData( srccontent );
 					}
 		      }
-		      
 		    });
-			
-		
 		}
 		
 		

@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>公司简介</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="./css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/slider.css" rel="stylesheet" type="text/css"
+	media="all" />
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
+<script type="text/javascript" src="./js/nav.js"></script>
+<script type="text/javascript" src="./js/move-top.js"></script>
+<script type="text/javascript" src="./js/easing.js"></script>
+<script type="text/javascript" src="./js/nav-hover.js"></script>
+<script type="text/javascript"  src="./js/jsbase64.js"></script>
+<script type="text/javascript"  src="./js/json.js"></script>
+
+
+<script>
+	function loaddata(){
+		var ui =document.getElementById("hangyenews");
+	    var index =ui.childNodes.length;
+	    
+	    
+	    if( index===1){
+		    getRightNews("8","newss","qiyexinwen","home");
+			getRightNews("8","hangyedongtai","hangyenews","home");
+			getRightNews("4","sucessexample","jiamenglist","sucessexample");
+
+	    }
+	    getTopShangPin("4");
+	    getLianXiWoMan("homelianxiwomen");
+	    getLianXiWoMan("homegongsijianjie");
+	    
+	    
+	    //var body =document.getElementById("body");
+	   // var htmlUrl = window.parent.$("#main_iframe").height(body.height()+170);
+	    
+	}
+	
+	function getRightNews(size,seconduiid ,uimodleid ,uiid){
+		var url='./admin/news/gettopnews.do?size='+size +'&'+'seconduiid=' + seconduiid+'&'+'uiid='+uiid;
+	    var ui =document.getElementById(uimodleid);
+	    var index =ui.childNodes.length;
+		    	$.get(url,function(data) {
+				if(data.flag=='0'){
+					var array = JSON.parse(data.datas);
+					for(var i = array.length-1 ; i >-1 ;i--)
+					{
+						  var li= document.createElement("li");
+						  var html;
+						  if(seconduiid == uiid){
+						  	html = "<a href ='"+ "./News.html?uiid=home&seconduiid=news&title="+'多美咁多大陆架的' +"'" + '>' +"<img  src='" +array[i].titleImage+"'"+" /></a>";
+						    li.className = "jiameng";
+						  }else{
+						  	html = "<a href ='"+ "./News.html?uuid=home&seconduiid=news&title="+  '多美咁多大陆架的'  +"'" + '>' + array[i].title +"</a><span>" + array[i].date + "</sqan>";
+						  }
+
+  						  li.innerHTML = html;
+						  ui.appendChild(li);
+
+					}
+					IFrameResize();
+				}
+			});
+
+	}
+	
+		function getTopShangPin(size){
+			var url='./admin/shangpin/gettopshangpin.do?size='+size;
+		    var ui =document.getElementById("shangpinlist");
+		    var index =ui.childNodes.length;
+		    if(index===1){
+			    	$.get(url,function(data) {
+					if(data.flag=='0'){
+						var array = JSON.parse(data.datas);
+						for(var i = 0 ; i<array.length ;i++)
+						{
+							  var li= document.createElement("li");
+							  li.className = "jiameng";
+							  var html = "<a href ='baidu.com'>" +"<img  src='" +array[i].iamgeUrl1+"'"+" /></a>";
+							  li.innerHTML = html;
+							  ui.appendChild(li);
+						}
+						IFrameResize();
+					}
+				});
+		    }
+		  }
+		    
+		  function getLianXiWoMan(title){
+			    var url='./admin/news/getnewsbytitle.do?title='+title;
+		    	$.get(url,function(data) {
+				if(data.flag=='0'){
+					
+					var array = JSON.parse(data.datas);
+			        var base64 = new Base64();  
+			        var srccontent = array[0].content;
+			        srccontent = srccontent.replace('_', '+');
+        			srccontent = srccontent.replace('-', '/');
+        			var srccontent = base64.decode(srccontent);
+        			var str = "homegongsijianjie";
+        			if(title ==str){
+        				document.getElementById('gongsijianjie').innerHTML = "<span> 韩国进口公司简介 </span>"+srccontent; 
+        			}
+        			else{
+        				document.getElementById('lianxiwomen').innerHTML = srccontent; 
+        			
+        			}
+				}
+			});
+
+		  }
+		  
+		  function IFrameResize(){  
+			 var obj = parent.document.getElementById("main_iframe");  //取得父页面IFrame对象  
+			 //弹出父页面中IFrame中设置的高度  
+			 obj.height = this.document.body.scrollHeight ;  //调整父页面中IFrame的高度为此页面的高度  
+		  }  
+
+</script>
+
+</head>
+<body onload="loaddata()" id = "body"  >
+		<div class="main">
+			<div class="content">
+			<div class="section group">
+
+				<div class="left_frame">
+
+					<div class="a_1" id="gongsijianjie">
+						
+					</div>
+					<div class="a_3">
+						<dl>
+							<dt>
+								<a href="/?c=message"><img src="./static/images/a1.jpg"
+									width="44" height="53" /></a>
+							</dt>
+							<dd>
+								<a href="/?c=message">新手指南</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="/?c=message"><img src="./static/images/a2.jpg"
+									width="44" height="53" /></a>
+							</dt>
+							<dd>
+								<a href="/?c=message">如何加盟</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="/?c=message"><img src="./static/images/a3.jpg"
+									width="44" height="53" /></a>
+							</dt>
+							<dd>
+								<a href="/?c=message">邮件我们</a>
+							</dd>
+						</dl>
+					</div>
+
+					<div class="a_4">
+						<img src="./static/images/lxwm.jpg" height="77" />
+						<div id = "lianxiwomen">
+
+						</div>
+					</div>
+				</div>
+
+				<div class="right_frame">
+					<div class="b1">
+						<dl class="b11">
+							<dt>
+								<img src="./static/images/s1.jpg" width="16" height="14" />企业新闻
+							</dt>
+							<dd>
+								<a href=""><img
+									src="./static/images/more.jpg" width="32" height="12" /></a>
+							</dd>
+						</dl>
+						<ul id= qiyexinwen >
+
+						</ul>
+					</div>
+
+
+					<div class="b1" >
+						<dl class="b11">
+							<dt>
+								<img src="./static/images/s1.jpg" width="16" height="14" />行业动态
+							</dt>
+							<dd>
+								<a href=""><img
+									src="./static/images/more.jpg" width="32" height="12" /></a>
+							</dd>
+						</dl>
+						<ul id="hangyenews">
+
+						</ul>
+					</div>
+				</div>
+
+				<div class="image1_frame">
+					<dl> 
+						<dt>
+						    <img src="./static/images/js.jpg" width="16" height="14" />最新商品:
+						</dt>
+					</dl>
+					<ul  id="shangpinlist" >
+						
+			        </ul>
+				
+
+				</div>
+				
+				<div class = "image2_frame" >
+				  <div class="ad"><a href=""><img src="http://mobile1230.com/static/upfile/201402200851215610.jpg" width="370" height="110" style=" margin-right:11px;" /></a><a href=""><img src="http://mobile1230.com/static/upfile/201402200851215610.jpg" width="370" height="110" /></a></div>
+				
+				</div>
+				
+				<div class = "image3_frame"  >
+					<dl> 
+						<dt>
+						<img src="./static/images/js.jpg" width="16" height="14" />加盟实体店:
+						</dt>
+					</dl>
+					<ul id="jiamenglist" >
+
+			        </ul>
+				
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+
+    
+</body>
+</html>
+
