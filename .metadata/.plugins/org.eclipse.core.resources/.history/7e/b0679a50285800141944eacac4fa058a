@@ -1,0 +1,85 @@
+/**
+ * 
+ */
+
+
+
+//初始化home购物车数量
+	function loadcart(){
+		var cartt = localStorage.getItem("cart100");
+		if( cartt === null){
+			var arr = new Array();
+			var jss = {allcount:0,arrayd:arr};
+			var arr1 = JSON.stringify(jss);
+			localStorage.setItem("cart100",arr1);
+			document.getElementById("home_cart_count").innerHTML = 0;
+		}else{
+		
+			var ddd = JSON.parse(cartt);
+			document.getElementById("home_cart_count").innerHTML = ddd.allcount;
+			
+		}
+	}
+	
+//addcart onclick
+	function addcartevent(id){
+		alert("addcartevent");
+		var shanpin = {id:id,count:1};
+
+		//addcart(shangpin);
+		var cartt = localStorage.getItem("cart100");
+		alert(cartt);
+		if( cartt === null){
+			alert("null....")
+			var arr = new Array();
+			arr.push(shangpin);
+			var jss = {allcount:0,arrayd:arr};
+			var arr1 = JSON.stringify(jss);
+			alert(arr1);
+			localStorage.setItem("cart100",arr1);
+
+		}else{
+			alert("else...");
+			var ddd = JSON.parse(cartt);
+			var boo = 0 ;
+			alert(ddd.arrayd.length);
+			alert("000");
+			for(var i = 0 ; i < ddd.arrayd.length;i++){
+				
+				if(ddd.arrayd[i].id === shangpin.id){
+					ddd.arrayd[i].count += shangpin.count;
+					boo = 1;
+				}	
+				if(boo === 1 )break;
+			}
+			
+			if(boo ===0 ){
+				alert("push");
+				ddd.arrayd.push(shangpin);
+			}
+		}
+		
+		ddd.allcount += shangpin.count;
+		alert(ddd.allcount);
+		parent.document.getElementById("home_cart_count").innerHTML = ddd.allcount;
+		
+		
+	}
+
+//加入购物车
+	function addcart(shangpin){
+		alert("addcart()");
+		alert(shangpin.id);
+
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

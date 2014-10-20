@@ -1,0 +1,15 @@
+package com.gaogao.bussiness.user.dao;
+import java.util.List;
+
+import com.gaogao.bussiness.user.bo.ShangPinType;
+
+public interface ShangPinTypeDao {
+	
+	public boolean addShangPin(ShangPinType shangping);
+	
+	//public boolean updateShangPin(ShangPinType shangpin);
+	
+	public List<ShangPinType> getShangPin(String id);
+	//public List<ShangPinType> getallShangPin();
+
+}

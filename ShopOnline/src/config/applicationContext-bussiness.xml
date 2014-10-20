@@ -19,6 +19,11 @@
 	<bean id="newsService" class="com.gaogao.bussiness.user.service.NewsServicelmpl">
 		<property name="newsDao" ref="newsDao" />
 	</bean>
+	
+	<bean id="shangPinTypeService" class="com.gaogao.bussiness.user.service.ShangPinTypeServicelmpl">
+		<property name="shangPinTypeDao" ref="shangPinTypeDao" />
+	</bean>
+	
 
 	<bean id="shangPinService" class="com.gaogao.bussiness.user.service.ShangPinServicelmpl">
 		<property name="shangPinDao" ref="shangPinDao" />

@@ -1,0 +1,15 @@
+package com.gaogao.bussiness.user.service;
+
+import com.gaogao.bussiness.user.bo.ShangPinType;
+
+public class ShangPinTypeServicelmpl implements ShangPinTypeService{
+
+	
+	public boolean addShangPinType(ShangPinType type)
+	{
+		
+		
+		return true;
+		
+	}
+}

@@ -1,0 +1,21 @@
+package com.gaogao.bussiness.user.web;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.gaogao.bussiness.user.bo.News;
+import com.gaogao.bussiness.user.bo.User;
+import com.gaogao.bussiness.user.service.NewsServicelmpl;
+import com.gaogao.bussiness.user.service.NewsService;
+import com.gaogao.bussiness.user.service.UserService;
+import com.gaogao.common.base.BaseController;
+import com.gaogao.common.base.ResultMessage;
+import com.gaogao.common.util.Md5Util;
+import com.alibaba.fastjson.*;
+import java.util.*;
+
+public class ShangPinTypeController extends BaseController {
+
+}

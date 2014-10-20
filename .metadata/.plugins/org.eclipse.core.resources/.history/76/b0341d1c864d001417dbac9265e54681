@@ -1,7 +1,0 @@
-/applicationContext-bussiness.xml
-/applicationContext-controller.xml
-/applicationContext-dataaccess.xml
-/applicationContext.xml
-/com/
-/dispatcher-servlet.xml
-/jdbc.properties

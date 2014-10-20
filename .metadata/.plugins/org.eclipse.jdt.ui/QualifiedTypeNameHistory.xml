@@ -4,4 +4,10 @@
 <fullyQualifiedTypeName name="com.gaogao.bussiness.user.bo.ShangPin"/>
 <fullyQualifiedTypeName name="com.gaogao.bussiness.user.service.ShangPinService"/>
 <fullyQualifiedTypeName name="com.gaogao.bussiness.user.bo.ShangPinMapper"/>
+<fullyQualifiedTypeName name="com.gaogao.bussiness.user.dao.ShangPinTypeDao"/>
+<fullyQualifiedTypeName name="com.gaogao.bussiness.user.service.ShangPinTypeServicelmpl"/>
+<fullyQualifiedTypeName name="com.gaogao.bussiness.user.service.ShangPinTypeService"/>
+<fullyQualifiedTypeName name="com.gaogao.bussiness.user.bo.ShangPinType"/>
+<fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 </qualifiedTypeNameHistroy>

@@ -22,6 +22,10 @@
 	<bean class="com.gaogao.bussiness.user.web.NewsController" parent="baseController1">
 		<property name="newsService" ref="newsService"></property>
 	</bean>
+	
+	<bean class="com.gaogao.bussiness.user.web.ShangPinTypeController" parent="baseController1">
+		<property name="shangPinTypeService" ref="shangPinTypeService"></property>
+	</bean>
 
 	<bean class="com.gaogao.bussiness.user.web.ShangPinController"
 		parent="baseController1">

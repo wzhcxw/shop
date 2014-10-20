@@ -33,11 +33,8 @@
 	    getLianXiWoMan("homelianxiwomen");
 	    getLianXiWoMan("homegongsijianjie");
 	    
-	    
-	    //var body =document.getElementById("body");
-	   // var htmlUrl = window.parent.$("#main_iframe").height(body.height()+170);
-	    
 	}
+	 
 	
 	function getRightNews(size,seconduiid ,uimodleid ,uiid){
 		var url='./admin/news/gettopnews.do?size='+size +'&'+'seconduiid=' + seconduiid+'&'+'uiid='+uiid;
@@ -79,7 +76,7 @@
 						{
 							  var li= document.createElement("li");
 							  li.className = "jiameng";
-							  var html = "<a href ='baidu.com'>" +"<img  src='" +array[i].iamgeUrl1+"'"+" /></a>";
+							  var html = "<a href ='preview.html'>" +"<img  src='" +array[i].iamgeUrl1+"'"+" /></a>";
 							  li.innerHTML = html;
 							  ui.appendChild(li);
 						}
@@ -123,6 +120,21 @@
 
 </head>
 <body onload="loaddata()" id = "body"  >
+
+	<div class="header_bottom">
+		<div id="slideshow">
+			<ul class="slides">
+				<li><a href="preview.html"><img src="./images/1.jpg"
+						alt="Marsa Alam underawter close up" height="342px" /></a></li>
+			</ul>
+			<span class="arrow previous"></span> <span class="arrow next"></span>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+
+
+
 		<div class="main">
 			<div class="content">
 			<div class="section group">
@@ -224,7 +236,7 @@
 				<div class = "image3_frame"  >
 					<dl> 
 						<dt>
-						<img src="./static/images/js.jpg" width="16" height="14" />加盟实体店:
+						<img src="./static/images/js.jpg" width="16" height="14" />招商加盟:
 						</dt>
 					</dl>
 					<ul id="jiamenglist" >

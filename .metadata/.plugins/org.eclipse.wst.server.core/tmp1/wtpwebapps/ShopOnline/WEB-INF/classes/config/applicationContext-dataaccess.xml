@@ -22,6 +22,9 @@
 		parent="jdbcDao" />
 	<bean id="shangPinDao" class="com.gaogao.bussiness.user.dao.ShangPinJdbcDaolmpl"
 		parent="jdbcDao" />
+		
+	<bean id="shangPinTypeDao" class="com.gaogao.bussiness.user.dao.ShangPinTypeDaolmpl"
+		parent="jdbcDao" />
 
 
 </beans>

@@ -34,9 +34,9 @@ public class ShangPinServicelmpl implements ShangPinService{
 		return this.shangPinDao.updateShangPin(shangpin);
 	}
 	@Override
-	public List<ShangPin> getShangPin(ShangPin shangpin)
+	public ShangPin getShangPin(String id)
 	{
-		return this.shangPinDao.getShangPin(shangpin);
+		return this.shangPinDao.getShangPin(id);
 	}
 	@Override
 	public List<ShangPin> getallShangPin()

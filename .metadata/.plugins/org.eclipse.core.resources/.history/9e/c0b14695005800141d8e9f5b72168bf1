@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Free Smart Store Website Template | Preview :: w3layouts</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="./css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/slider.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="./css/menu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./js/move-top.js"></script>
+<script type="text/javascript" src="./js/easing.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
+<script type="text/javascript" src="./js/nav.js"></script>
+<script type="text/javascript" src="./js/nav-hover.js"></script>
+<script type="text/javascript" src="./js/urlparm.js"></script>
+<script type="text/javascript"  src="./js/jsbase64.js"></script>
+<script type="text/javascript"  src="./js/json.js"></script>
+
+<script type="text/javascript">
+		  function IFrameResize(){  
+			 var obj = parent.document.getElementById("main_iframe");  //取得父页面IFrame对象  
+			 //弹出父页面中IFrame中设置的高度  this.document.body.scrollHeight
+			 
+			 obj.height = this.document.body.scrollHeight ;  //调整父页面中IFrame的高度为此页面的高度 
+		  }
+		  
+		 function urlpser(){
+			 	
+			 	var url1 = decodeURIComponent(this.location.href);
+			 	
+				var index = url1.indexOf("?");
+				if(index > 0){
+			 	var shangpinid =	geturlvalue("shangpinid",url1)
+			 	 getshangpintype();
+				var url='./admin/shangpin/getshangpin.do?shangpinid=' + shangpinid;
+				$.get(url,function(data) {
+					if(data.flag=='0'){
+						var array = JSON.parse(data.datas);
+						var shangpin = array[0];
+						
+						var hname = document.getElementById("hname");
+						hname.innerHTML = shangpin.name;
+						var jianjie = document.getElementById("shangpinjianjie");
+						jianjie.innerHTML = "商品简介:<br>"+ shangpin.dscr;
+						var price = document.getElementById("price");
+						price.innerHTML = "价格 : <span>"+ shangpin.price +"元"+"</span>";
+						var shangpguige = document.getElementById("shangpinguige");
+						shangpguige.innerHTML = "商品规格  :";
+						
+						var xinghao = document.getElementById("xinghao");
+						xinghao.innerHTML = "型号 : " + shangpin.guige;
+						var leixing = document.getElementById("leixing");
+						leixing.innerHTML = "类型 : "+shangpin.type;
+						var shuliang = document.getElementById("shuliang");
+						shuliang.innerHTML = "数量 : 1个";
+
+				        var srccontent = shangpin.detailDes;
+				        
+				        var base64 = new Base64();  
+				        srccontent = srccontent.replace('_', '+');
+	        			srccontent = srccontent.replace('-', '/');
+	        		    srccontent = base64.decode(srccontent);
+	        		    
+	        		    var detail = document.getElementById("detail");
+	        		    detail.innerHTML = "<h2>商品详情</h2>"+srccontent;
+	        		   
+
+						
+						 var obj = parent.document.getElementById("main_iframe");  //取得父页面IFrame对象 
+						 var body = document.getElementById("mainbody");
+						 //弹出父页面中IFrame中设置的高度  
+						 obj.height = body.scrollHeight+50;  //调整父页面中IFrame的高度为此页面的高度 
+
+						}
+						
+					});
+
+				}
+				else{
+					
+					
+				}
+		 }
+		 
+	function getshangpintype(){
+		alert("getshangpintype");
+		var url='./admin/shangpintype/getallskutype.do?';
+		$.get(url,function(data) {
+			if(data.flag=='0'){
+				var array = JSON.parse(data.datas);
+				alert(array.length);
+				var selcett = document.getElementById("typess");
+				var tex = "";
+				for(var i = 0 ; i < array.length;i++)
+				{
+ 				 	var types = array[i];
+ 				 	//<li><a href="#">韩国系列</a></li>
+ 				 	tex +=  "<li><a href='" + "#>" + types.shangPinType + "</a></li>"  ;  
+				}
+				
+				selcett.innerHTML = tex;
+			}
+
+		});
+		
+		}
+
+
+</script>
+
+</head>
+<body onload="urlpser()" id = "mainbody">
+		<div class="main">
+			<div class="content">
+				<div class="content_top">
+					<div class="back-links">
+						<p>
+							<a href="#">首页</a> >> <a href="#">商品详情</a>
+						</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="section group">
+					<div class="cont-desc span_1_of_2">
+						<div class="grid images_3_of_2">
+							<img src="http://duomeihan.com/data/file/grp0201/2093864739_iZGTe5KS_img01.jpg" alt="" />
+						</div>
+						<div class="desc span_3_of_2" id = shangpingrid>
+							<h2 id= "hname"></h2>
+							<p id = "shangpinjianjie"></p>
+							<div class="price">
+								<p id = "price">
+								</p>
+							</div>
+							<div class="available">
+								<p id = "shangpinguige"></p>
+								<ul>
+									<li id = "leixing"></li>
+									<li id = "xinghao"></li>
+									<li id = "shuliang"></li>
+								</ul>
+							</div>
+
+							<div class="add-cart">
+								<div class="rating">
+									<p>
+										评价: <img src="./images/rating.png"><span>100%好评</span>
+									</p>
+								</div>
+								<div class="button">
+									<span ><a href="#">加入购物车</a></span>
+								</div>
+								<div class="clear"></div>
+							</div>
+							
+						</div>
+					<div class="product-desc" id = "detail">
+							
+							
+						</div>
+	
+				</div>
+					<div class="rightsidebar span_3_of_1">
+						<h2>类型系列</h2>
+						<ul id = "typess">
+
+						</ul>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
+

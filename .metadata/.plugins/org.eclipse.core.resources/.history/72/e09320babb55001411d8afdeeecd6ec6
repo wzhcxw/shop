@@ -1,0 +1,9 @@
+package com.gaogao.bussiness.user.dao;
+
+import com.gaogao.common.base.JdbcDao;
+
+public class ShangPinTypeDaolmpl extends  JdbcDao implements ShangPinTypeDao{
+
+	
+	
+}

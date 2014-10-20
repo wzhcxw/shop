@@ -1,0 +1,11 @@
+package com.gaogao.bussiness.user.service;
+
+import com.gaogao.bussiness.user.bo.News;
+
+public interface ShangPinTypeService {
+	
+	
+	public boolean addNews(News news);
+	
+	
+}

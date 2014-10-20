@@ -12,7 +12,7 @@
 	function addrow(){
 		var url='./shangpin/getallshangpin.do?';
 		$.get(url,function(data) {
-			alert("addr.......");
+
 			if(data.flag=='0'){
 				var array = JSON.parse(data.datas);
 				for(var i = 0 ; i < array.length;i++)
@@ -43,7 +43,6 @@
 	}
 
 		function modifynews(item){
-		alert("moddddddddddd");
 		
 		    var shangpin = {name:"",shangpinid:item.id,price:"",dscr:"",guige:"",type:"",zhongliang:"",chandi:"",iamgeurl1:"",iamgeurl2:"",iamgeurl3:""};
 			shangpin = JSON.stringify(shangpin);
@@ -66,8 +65,6 @@
 	      if(data.flag == "0"){
 	        //本地删除数据
 	      	var table=document.getElementById("listtable"); 
-	      	
-	      	alert(table.id);
 	      	var i = item.parentNode.parentNode.rowIndex;
 	
 	      	table.deleteRow(i);

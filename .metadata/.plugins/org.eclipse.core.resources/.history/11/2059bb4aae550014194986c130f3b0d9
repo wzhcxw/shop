@@ -1,0 +1,9 @@
+package com.gaogao.bussiness.user.bo;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+public class ShangPinTypeMapper implements RowMapper<ShangPinType>{
+
+}

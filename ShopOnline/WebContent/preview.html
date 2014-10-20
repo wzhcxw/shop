@@ -16,15 +16,120 @@
 <script type="text/javascript" src="./js/script.js"></script>
 <script type="text/javascript" src="./js/nav.js"></script>
 <script type="text/javascript" src="./js/nav-hover.js"></script>
+<script type="text/javascript" src="./js/urlparm.js"></script>
+<script type="text/javascript"  src="./js/jsbase64.js"></script>
+<script type="text/javascript"  src="./js/json.js"></script>
+<script type="text/javascript"  src="./js/interface.js"></script>
+
+<script type="text/javascript">
+		  function IFrameResize(){  
+			 var obj = parent.document.getElementById("main_iframe");  //取得父页面IFrame对象  
+			 //弹出父页面中IFrame中设置的高度  this.document.body.scrollHeight
+			 
+			 obj.height = this.document.body.scrollHeight ;  //调整父页面中IFrame的高度为此页面的高度 
+		  }
+		  
+		 function urlpser(){
+			 	
+			 	var url1 = decodeURIComponent(this.location.href);
+			 	
+				var index = url1.indexOf("?");
+				if(index > 0){
+			 	var shangpinid =	geturlvalue("shangpinid",url1)
+			 	 getshangpintype();
+				var url='./admin/shangpin/getshangpin.do?shangpinid=' + shangpinid;
+				$.get(url,function(data) {
+					if(data.flag=='0'){
+					
+						var shangpin = JSON.parse(data.datas);
+						
+						var hname = document.getElementById("hname");
+						hname.innerHTML = shangpin.name;
+						var jianjie = document.getElementById("shangpinjianjie");
+						jianjie.innerHTML = "商品简介:<br>"+ shangpin.dscr;
+						var price = document.getElementById("price");
+						price.innerHTML = "价格 : <span>"+ shangpin.price +"元"+"</span>";
+						var shangpguige = document.getElementById("shangpinguige");
+						shangpguige.innerHTML = "商品规格  :";
+						
+						var xinghao = document.getElementById("xinghao");
+						xinghao.innerHTML = "型号 : " + shangpin.guige;
+						var leixing = document.getElementById("leixing");
+						leixing.innerHTML = "类型 : "+shangpin.type;
+						var shuliang = document.getElementById("shuliang");
+						shuliang.innerHTML = "数量 : 1个";
+
+				        var srccontent = shangpin.detailDes;
+				        
+				        var base64 = new Base64();  
+				        srccontent = srccontent.replace('_', '+');
+	        			srccontent = srccontent.replace('-', '/');
+	        		    srccontent = base64.decode(srccontent);
+	        		    
+	        		    var detail = document.getElementById("detail");
+	        		    detail.innerHTML = "<h2>商品详情</h2>"+srccontent;
+	        		   
+						 var obj = parent.document.getElementById("main_iframe");  //取得父页面IFrame对象 
+						 var body = document.getElementById("mainbody");
+						 //弹出父页面中IFrame中设置的高度  
+						 obj.height = body.scrollHeight;  //调整父页面中IFrame的高度为此页面的高度 
+
+						}
+						
+					});
+
+				}
+				else{
+					
+					
+				}
+		 }
+		 
+	function getshangpintype(){
+		var url='./admin/shangpintype/getallskutype.do?';
+		$.get(url,function(data) {
+			if(data.flag=='0'){
+				var array = JSON.parse(data.datas);
+				var selcett = document.getElementById("typess");
+				var tex = "";
+				for(var i = 0 ; i < array.length;i++)
+				{
+ 				 	var types = array[i];
+ 				 	//<li><a href="#">韩国系列</a></li>
+ 				 	tex +=  "<li><a href='" + "#" +"'" +">" + types.shangPinType + "</a></li>"  ; 
+ 				 
+				}
+				
+				selcett.innerHTML = tex;
+			}
+
+		});
+		
+		}
+
+	function addcart(){
+		var url1 = decodeURIComponent(this.location.href);
+	 	alert(url1);
+		var index = url1.indexOf("?");
+		if(index > 0){
+			var shangpinid = geturlvalue("shangpinid",url1)
+			alert(shangpinid);
+	 		addcartevent(shangpinid);
+		
+		}
+		
+	}
+
+</script>
+
 </head>
-<body>
-	<div class="wrap">
+<body onload="urlpser()" id = "mainbody">
 		<div class="main">
 			<div class="content">
 				<div class="content_top">
 					<div class="back-links">
 						<p>
-							<a href="#">Home</a> >> <a href="#">Electronics</a>
+							<a href="#">首页</a> >> <a href="#">商品详情</a>
 						</p>
 					</div>
 					<div class="clear"></div>
@@ -32,159 +137,54 @@
 				<div class="section group">
 					<div class="cont-desc span_1_of_2">
 						<div class="grid images_3_of_2">
-							<img src="./images/preview-img.jpg" alt="" />
+							<img src="http://duomeihan.com/data/file/grp0201/2093864739_iZGTe5KS_img01.jpg" alt="" />
 						</div>
-						<div class="desc span_3_of_2">
-							<h2>Lorem Ipsum is simply dummy text</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-								sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore.</p>
+						<div class="desc span_3_of_2" id = shangpingrid>
+							<h2 id= "hname"></h2>
+							<p id = "shangpinjianjie"></p>
 							<div class="price">
-								<p>
-									Price: <span>$500</span>
+								<p id = "price">
 								</p>
 							</div>
 							<div class="available">
-								<p>Available Options :</p>
+								<p id = "shangpinguige"></p>
 								<ul>
-									<li>Color: <select>
-											<option>Silver</option>
-											<option>Black</option>
-											<option>Dark Black</option>
-											<option>Red</option>
-									</select></li>
-									<li>Size:<select>
-											<option>Large</option>
-											<option>Medium</option>
-											<option>small</option>
-											<option>Large</option>
-											<option>small</option>
-									</select></li>
-									<li>Quality:<select>
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
-									</select></li>
+									<li id = "leixing"></li>
+									<li id = "xinghao"></li>
+									<li id = "shuliang"></li>
 								</ul>
 							</div>
-							<div class="share">
-								<p>Share Product :</p>
-								<ul>
-									<li><a href="#"><img src="./images/youtube.png" alt=""></a></li>
-									<li><a href="#"><img src="./images/facebook.png"
-											alt=""></a></li>
-									<li><a href="#"><img src="./images/twitter.png" alt=""></a></li>
-									<li><a href="#"><img src="./images/linkedin.png"
-											alt=""></a></li>
-								</ul>
-							</div>
+
 							<div class="add-cart">
 								<div class="rating">
 									<p>
-										Rating:<img src="./images/rating.png"><span>[3 of
-											5 Stars]</span>
+										评价: <img src="./images/rating.png"><span>100%好评</span>
 									</p>
 								</div>
 								<div class="button">
-									<span><a href="#">Add to Cart</a></span>
+								<button onclick = "addcart()" type="button">加入购物车</button>
+									
 								</div>
 								<div class="clear"></div>
 							</div>
+							
 						</div>
-						<div class="product-desc">
-							<h2>Product Details</h2>
-							<p>Lorem Ipsum is simply dummy text of the printing and
-								typesetting industry. Lorem Ipsum has been the industry's
-								standard dummy text ever since the 1500s, when an unknown
-								printer took a galley of type and scrambled it to make a type
-								specimen book. It has survived not only five centuries, but also
-								the leap into electronic typesetting, remaining essentially
-								unchanged.</p>
-							<p>Lorem Ipsum is simply dummy text of the printing and
-								typesetting industry. Lorem Ipsum has been the industry's
-								standard dummy text ever since the 1500s, when an unknown
-								printer took a galley of type and scrambled it to make a type
-								specimen book. It has survived not only five centuries, but also
-								the leap into electronic typesetting, remaining essentially
-								unchanged.</p>
+					<div class="product-desc" id = "detail">
+							
+							
 						</div>
-						<div class="product-tags">
-							<h2>Product Tags</h2>
-							<h4>Add Your Tags:</h4>
-							<div class="input-box">
-								<input type="text" value="" />
-							</div>
-							<div class="button">
-								<span><a href="#">Add Tags</a></span>
-							</div>
-						</div>
-					</div>
+	
+				</div>
 					<div class="rightsidebar span_3_of_1">
-						<h2>CATEGORIES</h2>
-						<ul>
-							<li><a href="#">Mobile Phones</a></li>
-							<li><a href="#">Desktop</a></li>
-							<li><a href="#">Laptop</a></li>
-							<li><a href="#">Accessories</a></li>
-							<li><a href="#">Software</a></li>
-							<li><a href="#">Sports & Fitness</a></li>
-							<li><a href="#">Footwear</a></li>
-							<li><a href="#">Jewellery</a></li>
-							<li><a href="#">Clothing</a></li>
-							<li><a href="#">Home Decor & Kitchen</a></li>
-							<li><a href="#">Beauty & Healthcare</a></li>
-							<li><a href="#">Toys, Kids & Babies</a></li>
+						<h2>类型系列</h2>
+						<ul id = "typess">
+							<li><a href='#>wwww</a></li><li><a href='#>wwwww</a></li><li><a href='#>sasdf</a></li><li><a href='#>ccccc</a></li>
 						</ul>
-						<div class="subscribe">
-							<h2>Newsletters Signup</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-								sed do eiusmod.......</p>
-							<div class="signup">
-								<form>
-									<input type="text" value="E-mail address"
-										onfocus="this.value = '';"
-										onblur="if (this.value == '') {this.value = 'E-mail address';"><input
-										type="submit" value="Sign up">
-								</form>
-							</div>
-						</div>
-						<div class="community-poll">
-							<h2>Community POll</h2>
-							<p>What is the main reason for you to purchase products
-								online?</p>
-							<div class="poll">
-								<form>
-									<ul>
-										<li><input type="radio" name="vote" class="radio"
-											value="1"> <span class="label"><label>More
-													convenient shipping and delivery </label></span></li>
-										<li><input type="radio" name="vote" class="radio"
-											value="2"> <span class="label"><label
-												for="vote_2">Lower price</label></span></li>
-										<li><input type="radio" name="vote" class="radio"
-											value="3"> <span class="label"><label
-												for="vote_3">Bigger choice</label></span></li>
-										<li><input type="radio" name="vote" class="radio"
-											value="5"> <span class="label"><label
-												for="vote_5">Payments security </label></span></li>
-										<li><input type="radio" name="vote" class="radio"
-											value="6"> <span class="label"><label
-												for="vote_6">30-day Money Back Guarantee </label></span></li>
-										<li><input type="radio" name="vote" class="radio"
-											value="7"> <span class="label"><label
-												for="vote_7">Other.</label></span></li>
-									</ul>
-								</form>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
 

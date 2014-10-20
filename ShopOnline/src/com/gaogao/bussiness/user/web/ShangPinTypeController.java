@@ -1,0 +1,74 @@
+package com.gaogao.bussiness.user.web;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.gaogao.bussiness.user.bo.News;
+import com.gaogao.bussiness.user.bo.ShangPin;
+import com.gaogao.bussiness.user.bo.ShangPinType;
+import com.gaogao.bussiness.user.service.*;
+import com.gaogao.common.base.BaseController;
+import com.gaogao.common.base.ResultMessage;
+import com.gaogao.common.util.Md5Util;
+import com.alibaba.fastjson.*;
+
+import java.util.*;
+
+
+@RequestMapping("/admin/shangpintype/")
+@Controller
+public class ShangPinTypeController extends BaseController {
+	
+	private ShangPinTypeService shangPinTypeService;
+	
+	
+	@RequestMapping("/addshangpintype")
+	@ResponseBody
+	public Object addshangpintype(HttpServletRequest request) {
+		ResultMessage result = null;
+		//获取post 数据（json体）
+		ShangPinType type = this.getPostDataToObject(request, ShangPinType.class);
+		
+		if(this.shangPinTypeService.addShangPinType(type))
+		{
+			result = ResultMessage.getSuccessResult("0" , "提交成功");
+		}
+		else
+		{
+			result = ResultMessage.getErrorResult("提交失败,请稍等再试");
+		}
+		
+		return result;
+	}
+	
+	
+	@RequestMapping("/getallskutype")
+	@ResponseBody
+	public Object getallShangPinType(HttpServletRequest request)
+	{
+		ResultMessage result = null;
+		
+	    List<ShangPinType> shangpinArray =	this.shangPinTypeService.getallShangPinType();
+		String arr = JSON.toJSONString(shangpinArray);
+		result = ResultMessage.getSuccessResult("0", "成功");
+		result.setDatas(arr);
+		return result;
+		
+	}
+	
+	
+	
+	public ShangPinTypeService getShangPinTypeService()
+	{
+		return this.shangPinTypeService;
+	}
+	
+	public void setShangPinTypeService(ShangPinTypeService service)
+	{
+		this.shangPinTypeService = service;
+	}
+	
+
+}

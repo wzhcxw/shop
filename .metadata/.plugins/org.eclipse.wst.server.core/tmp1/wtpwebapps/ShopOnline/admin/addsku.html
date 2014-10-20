@@ -9,9 +9,21 @@
 
 <script>
 
+		var editor, html = '';
+		function createEditor() {
+			if ( editor ){
+				return;
+			}
+			
+			var config = {};
+			editor = CKEDITOR.appendTo( 'editor', config, html );
+			pase();
+		}
+		
+		var editor11 = CKEDITOR.instances.editor;
+
+
 		function postss(){
-			
-			
 			//var table =  document.getElementById("shangpingid");
 			
 	        var shangpinid =document.getElementById("shangpinid").value;
@@ -19,18 +31,24 @@
 	        var price1 =	document.getElementById("price").value;
 	        var dscr1 =	document.getElementById("dscr").value;
 	        var guige1 =	document.getElementById("guige").value;
-	        var type1 =	document.getElementById("type1").value;
+	        var type1 =	document.getElementById("typeselect").options[document.getElementById("typeselect").selectedIndex].text;
 	        var zhongliang1 =	document.getElementById("zhongliang").value;
 	        var chandi1 =	document.getElementById("chandi").value;
 	        var image11 =	document.getElementById("image1").value;
 	        var image22 =	document.getElementById("image2").value;
 	        var image33 =	document.getElementById("image3").value;
+	        
+	        var srccontent = editor.getData();
+	        if(srccontent ==null )
+	        srccontent = "q";
+	        var base64 = new Base64();  
+	        srccontent = base64.encode(srccontent);
 
-			
-			alert(image11);
-			var jsonStr = {name:name2,shangpinid:shangpinid,price:price1,dscr:dscr1,guige:guige1,type:type1,zhongliang:zhongliang1,chandi:chandi1,iamgeurl1:image11,iamgeurl2:image22,iamgeurl3:image33};
+	        srccontent = srccontent.replace('+', '_');
+	        srccontent = srccontent.replace('/', '-');
+	        
+			var jsonStr = {detaildes:srccontent,name:name2,shangpinid:shangpinid,price:price1,dscr:dscr1,guige:guige1,type:type1,zhongliang:zhongliang1,chandi:chandi1,iamgeurl1:image11,iamgeurl2:image22,iamgeurl3:image33};
 			jsonStr = JSON.stringify(jsonStr);
-			alert(jsonStr);
 			var index = this.location.href.indexOf("?");
 			var  urll = "";
 			if(index > 0){
@@ -49,7 +67,6 @@
 		      if(data.flag == "0"){
 		      	alert(data.message);
 		      	
-		      	
 		      }
 		      
 		    });
@@ -58,26 +75,41 @@
 		 function urlpser(url){
 			 
 			 	url = decodeURIComponent(url);
-				
 				var index = url.indexOf("?");
 				if(index > 0){
 					var jsonstr = url.substr(index+1);
-		
 					var shangpin = JSON.parse(jsonstr);
-					if(shangpin!== null ){
-					
-						document.getElementById("shangpinid").value = shangpin.shangpinid;
+				var url='./shangpin/getshangpin.do?shangpinid=' + shangpin.shangpinid;
+				$.get(url,function(data) {
+		
+					if(data.flag=='0'){
+						var array = JSON.parse(data.datas);
+						var shangpin = array[0];
+						document.getElementById("shangpinid").value = shangpin.shangPinid;
 						document.getElementById("name1").value = shangpin.name;
 						document.getElementById("price").value = shangpin.price ;
 						document.getElementById("dscr").value = shangpin.dscr ;
 						document.getElementById("guige").value = shangpin.guige ;
-						document.getElementById("type1").value = shangpin.type ;
-						document.getElementById("chandi").value = shangpin.chandi ;
-						document.getElementById("image1").value = shangpin.iamgeurl1 ;
-						document.getElementById("image2").value = shangpin.iamgeurl2 ;
-						document.getElementById("image3").value = shangpin.iamgeurl3 ;
 
-					}
+						document.getElementById("chandi").value = shangpin.chandi ;
+						document.getElementById("image1").value = shangpin.iamgeUrl1 ;
+						document.getElementById("image2").value = shangpin.iamgeUrl2 ;
+						document.getElementById("image3").value = shangpin.iamgeUrl3;
+						
+						document.getElementById("zhongliang").value = shangpin.zhongLiang;
+						
+				        var srccontent = shangpin.detailDes;
+				        
+				        var base64 = new Base64();  
+				        srccontent = srccontent.replace('_', '+');
+	        			srccontent = srccontent.replace('-', '/');
+	        		    srccontent = base64.decode(srccontent);
+
+	        			editor.setData( srccontent );
+
+						}
+						
+					});
 
 				}
 				else{
@@ -85,11 +117,52 @@
 				
 				}
 		 
-		 
 		 }
 		
 		function pase(){
+		createEditor();
 			urlpser(this.location.href);
+			
+			getshangpintype();
+		}
+	
+	
+		function addtype(){
+		var skutype =  document.getElementById("shangpintype").value;
+		var jsonStr = {shangpintype:skutype};
+	     jsonStr = JSON.stringify(jsonStr);
+		urll = "./shangpintype/addshangpintype.do";
+		
+		 $.post(urll,jsonStr,
+		    function(data){
+		      if(data.flag == "0"){
+		      	alert(data.message);
+		      }
+		      
+		    });
+		}
+		
+		
+		function getshangpintype(){
+		
+		var url='./shangpintype/getallskutype.do?';
+		$.get(url,function(data) {
+
+			if(data.flag=='0'){
+				var array = JSON.parse(data.datas);
+				var selcett = document.getElementById("typeselect");
+				var tex = "";
+				for(var i = 0 ; i < array.length;i++)
+				{
+ 				 	var types = array[i];
+ 				 	tex += "<option value ='" + types.shangPinType+ "'>" + types.shangPinType +"</option>";  
+				}
+				
+				selcett.innerHTML = tex;
+			}
+
+		});
+		
 		}
 		
 	</script>
@@ -149,13 +222,18 @@ tr {
 			<td valign="top" bgcolor="#F7F8F9">&nbsp;
 
 
-				<body id="mainbody">
+				<div id="mainbody">
 					<br>
 					<table id="table3">
 						<tr>
 							<td class="tal" width="333" height="22">商 品 编 号:</td>
-							<td class="taa" width="655"><input id="shangpinid"
-								width="100">(商品编号不可修改)</input></td>
+							<td class="taa" width="655"><input id="shangpinid" width="100">(商品编号不可修改)</input></td>
+							<td height = "40" class = "tal"> 添加类型：</td>
+							<td><input id="shangpintype" width = "50"></input>
+							
+							</td>
+							<td><button type="button" onclick="addtype()" >提交类型</button></td>
+							
 						</tr>
 						<tr>
 							<td class="tal" height="27">商 品 名 称:</td>
@@ -166,7 +244,7 @@ tr {
 							<td><input id="price" width="50">元＊</input></td>
 						</tr>
 						<tr>
-							<td height="48" class="tal">商 品 介 绍:</td>
+							<td height="48" class="tal">商 品 简 介:</td>
 							<td><input id="dscr" width="350" height="100">＊</input></td>
 						</tr>
 						<tr>
@@ -175,7 +253,13 @@ tr {
 						</tr>
 						<tr>
 							<td height="35" class="tal">类 型:</td>
-							<td><input id="type1" width="50"></input></td>
+							<td>
+								<select name="typeselect" id = "typeselect">
+
+								</select>
+							
+							
+							</td>
 						</tr>
 						<tr>
 							<td height="32" class="tal">重 量:</td>
@@ -205,15 +289,15 @@ tr {
 						</tr>
 
 					</table>
+					
+					<div>商品详情:
+						<div id= "editor">
+	
+						</div>
 
+					</div>
 
-
-				</body>
-
-
-
-
-
+				</div>
 			</td>
 			<td background="../admin/images/mail_rightbg.gif">&nbsp;</td>
 		</tr>

@@ -61,7 +61,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	width: 774;
 	float: left;
 	margin-left: 15px;
-	margin-top:15px;
+	margin-top:10px;
 }
 
 .image2_frame {
@@ -70,7 +70,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	width: 774;
 	float: left;
 	margin-left: 15px;
-	margin-top:20px;
+	margin-top:10px;
 		border: 1px solid #CCCCCC;
 }
 
@@ -81,7 +81,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	float: left;
 	margin-left: 15px;
 	margin-top:10px;
-		border: 1px solid #CCCCCC;
 }
 
 
@@ -96,10 +95,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 
 .jiameng{
 	float:left;
+	
 }
 .jiameng a img{
-	width:188.5px;
+	margin-top:10px;
+	margin-left:10px;
+	width:180px;
 	height:150px;
+	border: 1px solid #CCCCCC;
+	
 }
 
 .image1_frame ui li a img{
@@ -1487,6 +1491,7 @@ button.grey:hover, .search button.grey:hover {
 	display: block;
 	float: left;
 	clear: both;
+	
 }
 
 .rightsidebar {
@@ -2152,3 +2157,25 @@ button.grey:hover, .search button.grey:hover {
 .right_bm{ float:right; width:754px; height:auto;}
 .loaction{ float:left; width:718px; height:34px; background:url(./static/images/loaction.jpg) no-repeat; line-height:34px; padding-left:36px;}
 .loaction a{ color:#666666;}
+
+
+
+.text04 {
+	font-family: "ËÎÌו"Microsoft Yahei,dotum,verdana; 
+	font-size: 14px;
+	line-height: 18px;
+	color: #676767;
+	border-top:1px solid #ddd; 
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.text05 {
+	font-family: "ËÎÌו"Microsoft Yahei,dotum,verdana; 
+	font-size: 14px;
+	line-height: 18px;
+	color: #7c7c7c;
+	border-top:1px solid #ddd; 
+	margin-top:5px;
+	margin-bottom:5px;
+}
+

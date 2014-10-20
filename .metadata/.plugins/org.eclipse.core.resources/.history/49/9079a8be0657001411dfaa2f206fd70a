@@ -1,0 +1,296 @@
+<link href="../admin/images/skin.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<script src="../admin/js/ckeditor.js"></script>
+<script src="../js/jquery-1.7.2.min.js"></script>
+<script src="../js/jsbase64.js"></script>
+<script src="../js/json.js"></script>
+
+
+<script>
+
+		var editor, html = '';
+		function createEditor() {
+			if ( editor ){
+				return;
+			}
+			
+			var config = {};
+			editor = CKEDITOR.appendTo( 'editor', config, html );
+			pase();
+		}
+		
+		var editor11 = CKEDITOR.instances.editor;
+
+
+		function postss(){
+			//var table =  document.getElementById("shangpingid");
+			
+	        var shangpinid =document.getElementById("shangpinid").value;
+	        var name2 =	document.getElementById("name1").value;
+	        var price1 =	document.getElementById("price").value;
+	        var dscr1 =	document.getElementById("dscr").value;
+	        var guige1 =	document.getElementById("guige").value;
+	        var type1 =	document.getElementById("type1").value;
+	        var zhongliang1 =	document.getElementById("zhongliang").value;
+	        var chandi1 =	document.getElementById("chandi").value;
+	        var image11 =	document.getElementById("image1").value;
+	        var image22 =	document.getElementById("image2").value;
+	        var image33 =	document.getElementById("image3").value;
+	        
+	        var srccontent = editor.getData();
+	        if(srccontent ==null )
+	        srccontent = "q";
+	        var base64 = new Base64();  
+	        srccontent = base64.encode(srccontent);
+
+	        srccontent = srccontent.replace('+', '_');
+	        srccontent = srccontent.replace('/', '-');
+	        
+			var jsonStr = {detaildes:srccontent,name:name2,shangpinid:shangpinid,price:price1,dscr:dscr1,guige:guige1,type:type1,zhongliang:zhongliang1,chandi:chandi1,iamgeurl1:image11,iamgeurl2:image22,iamgeurl3:image33};
+			jsonStr = JSON.stringify(jsonStr);
+			var index = this.location.href.indexOf("?");
+			var  urll = "";
+			if(index > 0){
+			
+				urll = "./shangpin/updatashangpin.do"
+			
+			}else{
+			
+				urll = "./shangpin/addshangpin.do"
+			
+			}
+			
+			
+		    $.post(urll,jsonStr,
+		    function(data){
+		      if(data.flag == "0"){
+		      	alert(data.message);
+		      	
+		      }
+		      
+		    });
+		 }
+		 
+		 function urlpser(url){
+			 
+			 	url = decodeURIComponent(url);
+				var index = url.indexOf("?");
+				if(index > 0){
+					var jsonstr = url.substr(index+1);
+					var shangpin = JSON.parse(jsonstr);
+				var url='./shangpin/getshangpin.do?shangpinid=' + shangpin.shangpinid;
+				$.get(url,function(data) {
+		
+					if(data.flag=='0'){
+						var array = JSON.parse(data.datas);
+						var shangpin = array[0];
+						document.getElementById("shangpinid").value = shangpin.shangPinid;
+						document.getElementById("name1").value = shangpin.name;
+						document.getElementById("price").value = shangpin.price ;
+						document.getElementById("dscr").value = shangpin.dscr ;
+						document.getElementById("guige").value = shangpin.guige ;
+						document.getElementById("type1").value = shangpin.type ;
+						document.getElementById("chandi").value = shangpin.chandi ;
+						document.getElementById("image1").value = shangpin.iamgeUrl1 ;
+						document.getElementById("image2").value = shangpin.iamgeUrl2 ;
+						document.getElementById("image3").value = shangpin.iamgeUrl3;
+						
+						document.getElementById("zhongliang").value = shangpin.zhongLiang;
+						
+				        var srccontent = shangpin.detailDes;
+				        
+				        var base64 = new Base64();  
+				        srccontent = srccontent.replace('_', '+');
+	        			srccontent = srccontent.replace('-', '/');
+	        		    srccontent = base64.decode(srccontent);
+
+	        			editor.setData( srccontent );
+
+						}
+						
+					});
+
+				}
+				else{
+					
+				
+				}
+		 
+		 }
+		
+		function pase(){
+		createEditor();
+			urlpser(this.location.href);
+		}
+		
+		function addtype(){
+		
+		var skutype =  document.getElementById("shangpintype").value;
+		
+		var jsonStr = {shangpintype:skutype};
+		
+	     jsonStr = JSON.stringify(jsonStr);
+		
+		urll = "./shangpintype/addshangpintype.do";
+		
+		 $.post(urll,jsonStr,
+		    function(data){
+		      if(data.flag == "0"){
+		      	alert(data.message);
+		      	
+		      }
+		      
+		    });
+		
+		}
+		
+	</script>
+
+
+</head>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #EEF2FB;
+}
+-->
+</style>
+
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+
+tr {
+	
+}
+
+.tal {
+	text-align: right;
+}
+</style>
+
+<body id="baody" onload="pase()">
+	<table id="table1" name="table11" width="100%" border="0"
+		cellpadding="0" cellspacing="0">
+		<tr>
+			<td width="17" valign="top"
+				background="../admin/images/mail_leftbg.gif"><img
+				src="../admin/images/left-top-right.gif" width="17" height="29" /></td>
+			<td valign="top" background="../admin/images/content-bg.gif">
+
+				<table width="100%" height="31" border="0" cellpadding="0"
+					cellspacing="0" class="left_topbg" id="table2">
+					<tr>
+						<td height="31"><div class="titlebt">添加商品</div></td>
+					</tr>
+				</table>
+			</td>
+
+			<td width="16" valign="top"
+				background="../admin/images/mail_rightbg.gif"><img
+				src="../admin/images/nav-right-bg.gif" width="16" height="29" /></td>
+		</tr>
+		<tr>
+			<td valign="middle" background="../admin/images/mail_leftbg.gif">&nbsp;</td>
+			<td valign="top" bgcolor="#F7F8F9">&nbsp;
+
+
+				<div id="mainbody">
+					<br>
+					<table id="table3">
+						<tr>
+							<td class="tal" width="333" height="22">商 品 编 号:</td>
+							<td class="taa" width="655"><input id="shangpinid" width="100">(商品编号不可修改)</input></td>
+							<td height = "40" class = "tal"> 添加类型：</td>
+							<td><input id="shangpintype" width = "50"></input>
+							
+							</td>
+							<td><button type="button" >提交类型</button></td>
+							
+						</tr>
+						<tr>
+							<td class="tal" height="27">商 品 名 称:</td>
+							<td><input id="name1" width="200"></input>＊</td>
+						</tr>
+						<tr>
+							<td class="tal">价 格:</td>
+							<td><input id="price" width="50">元＊</input></td>
+						</tr>
+						<tr>
+							<td height="48" class="tal">商 品 简 介:</td>
+							<td><input id="dscr" width="350" height="100">＊</input></td>
+						</tr>
+						<tr>
+							<td height="30" class="tal">型 号:</td>
+							<td><input id="guige" width="50"></input></td>
+						</tr>
+						<tr>
+							<td height="35" class="tal">类 型:</td>
+							<td>
+								<select name="typeselect" id = "typeselect">
+									<option value="volvo">Volvo</option>
+									<option value="saab">Saab</option>
+									<option value="fiat">Fiat</option>
+									<option value="audi">Audi</option>
+								</select>
+							
+							
+							</td>
+						</tr>
+						<tr>
+							<td height="32" class="tal">重 量:</td>
+							<td><input id="zhongliang" width="50">＊</input></td>
+						</tr>
+						<tr>
+							<td height="30" class="tal">产 地:</td>
+							<td><input id="chandi" width="50"></input></td>
+						</tr>
+
+						<tr>
+							<td height="31" class="tal">图 片 1:</td>
+							<td><input id="image1" width="350"></input></td>
+						</tr>
+						<tr>
+							<td height="33" class="tal">图 片 2:</td>
+							<td><input id="image2" width="350"></input></td>
+						</tr>
+						<tr>
+							<td height="33" class="tal">图 片 3:</td>
+							<td><input id="image3" width="350"></input></td>
+						</tr>
+
+						<tr>
+							<td><input type=submit onclick="postss()"></input></td>
+
+						</tr>
+
+					</table>
+					
+					<div>商品详情:
+						<div id= "editor">
+	
+						</div>
+
+					</div>
+
+				</div>
+			</td>
+			<td background="../admin/images/mail_rightbg.gif">&nbsp;</td>
+		</tr>
+		<tr>
+			<td valign="bottom" background="../admin/images/mail_leftbg.gif"><img
+				src="../admin/images/buttom_left2.gif" width="17" height="17" /></td>
+			<td background="../admin/images/buttom_bgs.gif"><img
+				src="../admin/images/buttom_bgs.gif" width="17" height="17"></td>
+			<td valign="bottom" background="../admin/images/mail_rightbg.gif"><img
+				src="../admin/images/buttom_right2.gif" width="16" height="17" /></td>
+		</tr>
+	</table>
+</body>

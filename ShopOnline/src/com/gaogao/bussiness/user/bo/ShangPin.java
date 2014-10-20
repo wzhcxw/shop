@@ -8,6 +8,7 @@ public class ShangPin {
 	String price;
 	
 	String dscr;// 商品介绍
+	String detaildes;// 商品详情
 
 	String guige;	//型号
 	String type;//类型
@@ -18,9 +19,14 @@ public class ShangPin {
 	String iamgeurl2;
 	String iamgeurl3;
 	
+	public synchronized String getDetailDes() {
+		return detaildes;
+	}
+	
 	public synchronized String getName() {
 		return name;
 	}
+	
 	public synchronized String getShangPinid() {
 		return shangpinid;
 	}
@@ -56,6 +62,9 @@ public class ShangPin {
 	
 	public synchronized void setName(String name) {
 		this.name = name;
+	}
+	public synchronized void setDetailDes(String detaildes) {
+		this.detaildes = detaildes;
 	}
 	public synchronized void setShangPinid(String shangpinid) {
 		this.shangpinid = shangpinid;

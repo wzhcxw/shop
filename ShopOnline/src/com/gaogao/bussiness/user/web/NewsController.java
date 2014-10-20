@@ -1,6 +1,8 @@
 package com.gaogao.bussiness.user.web;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import com.gaogao.common.base.BaseController;
 import com.gaogao.common.base.ResultMessage;
 import com.gaogao.common.util.Md5Util;
 import com.alibaba.fastjson.*;
+
 import java.util.*;
 
 
@@ -110,7 +113,7 @@ public class NewsController extends BaseController{
 	
 	@RequestMapping("/gettopnews")
 	@ResponseBody
-	public Object getTopNews(HttpServletRequest request){
+	public Object getTopNews(HttpServletRequest request,HttpServletResponse response){
 		ResultMessage result = null;
 		String size = request.getParameter("size");
 		String seconduiid = request.getParameter("seconduiid");
@@ -120,6 +123,16 @@ public class NewsController extends BaseController{
 		String arr = JSON.toJSONString(newsArray);
 		result = ResultMessage.getSuccessResult("0", "成功");
 		result.setDatas(arr);
+		
+		Cookie[] coo = request.getCookies();
+		
+		
+		Cookie cooki; 
+		cooki=new Cookie("pin","youke");//用户ID 
+		cooki.setMaxAge(60*60);//cookie时间  
+		response.addCookie(cooki); 
+		
+		
 		return result;
 		
 	}

@@ -9,7 +9,7 @@ public interface ShangPinService {
 	public boolean addShangPin(ShangPin shangping);
 	public boolean updateShangPin(ShangPin shangpin);
 	
-	public List<ShangPin> getShangPin(ShangPin shangpin);
+	public ShangPin getShangPin(String id);
 	public List<ShangPin> getallShangPin();
 	
 	public boolean deleteShangPin(ShangPin shangpin);

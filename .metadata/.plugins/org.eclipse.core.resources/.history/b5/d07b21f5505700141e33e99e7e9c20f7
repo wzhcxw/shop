@@ -1,0 +1,160 @@
+package com.gaogao.bussiness.user.web;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.gaogao.bussiness.user.bo.News;
+import com.gaogao.bussiness.user.bo.User;
+import com.gaogao.bussiness.user.service.NewsServicelmpl;
+import com.gaogao.bussiness.user.service.NewsService;
+import com.gaogao.bussiness.user.service.UserService;
+import com.gaogao.common.base.BaseController;
+import com.gaogao.common.base.ResultMessage;
+import com.gaogao.common.util.Md5Util;
+import com.alibaba.fastjson.*;
+
+import java.util.*;
+
+
+@RequestMapping("/admin/news/")
+@Controller
+public class NewsController extends BaseController{
+	
+	
+	private NewsService newsService;
+	
+	//添加文章接口
+	@RequestMapping("/addnews")
+	@ResponseBody
+	public Object addnews(HttpServletRequest request) {
+		ResultMessage result = null;
+		//获取post 数据（json体）
+		News news = this.getPostDataToObject(request, News.class);
+		
+		if(this.newsService.addNews(news))
+		{
+			result = ResultMessage.getSuccessResult("0" , "提交成功");
+		}
+		else
+		{
+			result = ResultMessage.getErrorResult("提交失败,请稍等再试");
+		}
+		
+		return result;
+	}
+	
+	
+	@RequestMapping("/updatanews")
+	@ResponseBody
+	public Object updatanews(HttpServletRequest request){
+		ResultMessage result = null;
+		News news = this.getPostDataToObject(request, News.class);
+
+		if (!this.newsService.updateNews(news)) {
+			result = ResultMessage.getSuccessResult("1", "更新失败，稍等一会再提交");
+		} else {
+			result = ResultMessage.getSuccessResult("0", "提交成功");
+		}
+		
+		return result;
+		
+	}
+	
+	@RequestMapping("/deletenews")
+	@ResponseBody
+	public Object deletenews(HttpServletRequest request){
+		ResultMessage result = null;
+		News title = this.getPostDataToObject(request, News.class);
+
+		if (!this.newsService.deleteNews(title)) {
+			result = ResultMessage.getSuccessResult("1", "删除失败，稍等一会再提交删除");
+		} else {
+			result = ResultMessage.getSuccessResult("0", "删除成功");
+		}
+		
+		return result;
+		
+	}
+	
+	@RequestMapping("/getnews")
+	@ResponseBody
+	public Object getNews(HttpServletRequest request){
+		ResultMessage result = null;
+		String size = request.getParameter("size");
+		String seconduiid = request.getParameter("seconduiid");
+		String uiid = request.getParameter("uiid");
+		
+	    List<News> newsArray =	newsService.getNews(uiid, seconduiid, size);
+		String arr = JSON.toJSONString(newsArray);
+		result = ResultMessage.getSuccessResult("0", "成功");
+		result.setDatas(arr);
+		return result;
+		
+	}
+	
+	@RequestMapping("/getallnews")
+	@ResponseBody
+	public Object getallNews(HttpServletRequest request){
+		ResultMessage result = null;
+		//News news = this.getParametersObject(request, News.class);
+		
+	    List<News> newsArray =	newsService.getallNews();
+		String arr = JSON.toJSONString(newsArray);
+		result = ResultMessage.getSuccessResult("0", "成功");
+		result.setDatas(arr);
+		return result;
+		
+	}
+	
+	@RequestMapping("/gettopnews")
+	@ResponseBody
+	public Object getTopNews(HttpServletRequest request){
+		ResultMessage result = null;
+		String size = request.getParameter("size");
+		String seconduiid = request.getParameter("seconduiid");
+		String uiid = request.getParameter("uiid");
+		
+	    List<News> newsArray =	newsService.getTopNews(size,seconduiid,uiid);
+		String arr = JSON.toJSONString(newsArray);
+		result = ResultMessage.getSuccessResult("0", "成功");
+		result.setDatas(arr);
+		
+		
+		Cookie cooki; 
+		cooki=new Cookie("pin","youke");//用户ID 
+		cooki.setMaxAge(60*60);//cookie时间 
+		cooki.setPath("/"); //根据个人的不用，在不同功能的路径下创建 
+		response.addCookie(cooki); 
+		
+		
+		return result;
+		
+	}
+	
+	@RequestMapping("/getnewsbytitle")
+	@ResponseBody
+	public Object getNewsByTitle(HttpServletRequest request){
+		ResultMessage result = null;
+		
+		String title = request.getParameter("title");		
+	    List<News> newsArray =	newsService.getNewsByTitle(title);
+		String arr = JSON.toJSONString(newsArray);
+		result = ResultMessage.getSuccessResult("0", "成功");
+		result.setDatas(arr);
+		return result;
+		
+	}
+	
+	public NewsService getNewsService() {
+		return newsService;
+	}
+
+
+	public void setNewsService(NewsService newsService) {
+		this.newsService = newsService;
+	}
+}

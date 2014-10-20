@@ -14,8 +14,8 @@ public class ShangPinJdbcDaolmpl extends  JdbcDao implements ShangPinDao{
 	public boolean addShangPin(ShangPin shangping)
 	{
 
-		 String sql = "insert into sku (name,shangpinid,price,dscr,guige,type,zhongliang,chandi,iamgeurl1,iamgeurl2,iamgeurl3) values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');";
-		 sql = String.format(sql, shangping.getName(),shangping.getShangPinid(),shangping.getPrice(),shangping.getDscr(),shangping.getGuige(),shangping.getType(),shangping.getZhongLiang(),shangping.getChandi(),shangping.getIamgeUrl1(),shangping.getIamgeUrl2(),shangping.getIamgeUrl3());
+		 String sql = "insert into sku (detaildes,name,shangpinid,price,dscr,guige,type,zhongliang,chandi,iamgeurl1,iamgeurl2,iamgeurl3) values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');";
+		 sql = String.format(sql, shangping.getDetailDes(), shangping.getName(),shangping.getShangPinid(),shangping.getPrice(),shangping.getDscr(),shangping.getGuige(),shangping.getType(),shangping.getZhongLiang(),shangping.getChandi(),shangping.getIamgeUrl1(),shangping.getIamgeUrl2(),shangping.getIamgeUrl3());
 		 return this.update(sql.toString());
 		
 	}
@@ -23,17 +23,16 @@ public class ShangPinJdbcDaolmpl extends  JdbcDao implements ShangPinDao{
 	public boolean updateShangPin(ShangPin shangping)
 	{
 
-		String sqlll = "UPDATE sku SET  name = '%s',price = '%s' , dscr = '%s' , guige = '%s' , type = '%s' , zhongliang = '%s' , chandi = '%s' , iamgeurl1 = '%s' , iamgeurl2 = '%s' , iamgeurl3 = '%s'  where shangpinid = '%s' ;";
-		sqlll = String.format(sqlll, shangping.getName(),shangping.getPrice(),shangping.getDscr(),shangping.getGuige(),shangping.getType(),shangping.getZhongLiang(),shangping.getChandi(),shangping.getIamgeUrl1(),shangping.getIamgeUrl2(),shangping.getIamgeUrl3(),shangping.getShangPinid());
+		String sqlll = "UPDATE sku SET detaildes = '%s', name = '%s',price = '%s' , dscr = '%s' , guige = '%s' , type = '%s' , zhongliang = '%s' , chandi = '%s' , iamgeurl1 = '%s' , iamgeurl2 = '%s' , iamgeurl3 = '%s'  where shangpinid = '%s' ;";
+		sqlll = String.format(sqlll, shangping.getDetailDes(), shangping.getName(),shangping.getPrice(),shangping.getDscr(),shangping.getGuige(),shangping.getType(),shangping.getZhongLiang(),shangping.getChandi(),shangping.getIamgeUrl1(),shangping.getIamgeUrl2(),shangping.getIamgeUrl3(),shangping.getShangPinid());
 		return this.update(sqlll.toString());
 	}
 	@Override
-	public List<ShangPin> getShangPin(ShangPin shangpin)
+	public ShangPin getShangPin(String id)
 	{
-		String sqll = "select * from sku where shangpinid = %s ;";
-		sqll = String.format(sqll, shangpin.getShangPinid());
-		ShangPinMapper newsmaper = new ShangPinMapper();
-		List<ShangPin> newslist = this.query( sqll, newsmaper ) ;
+		String sqll = "select name , shangpinid,price,dscr,detaildes,guige,type,zhongliang,chandi,iamgeurl1,iamgeurl2,iamgeurl3 from sku where shangpinid = '%s' ;";
+		sqll = String.format(sqll, id);
+		ShangPin newslist = this.queryForObject( sqll, new ShangPinMapper() ) ;
 	    return newslist;
 	}
 	@Override

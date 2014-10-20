@@ -1,0 +1,12 @@
+/**
+ * 数据model
+ */
+
+function shangpin(id,count) {
+    var obj =
+    {
+        'id':id,
+        'count':count
+    };
+    return obj;
+}

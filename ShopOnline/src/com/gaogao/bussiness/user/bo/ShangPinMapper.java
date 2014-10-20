@@ -11,6 +11,7 @@ public class ShangPinMapper implements RowMapper<ShangPin> {
 	String price;
 	
 	String dscr;// 商品介绍
+	String detaildes;// 商品详情
 
 	String guige;	//型号
 	String type;//类型
@@ -36,6 +37,7 @@ public class ShangPinMapper implements RowMapper<ShangPin> {
 		sp.setShangPinid(rs.getString("shangpinid"));
 		sp.setType(rs.getString("type"));
 		sp.setZhongLiang(rs.getString("zhongliang"));
+		sp.setDetailDes(rs.getString("detaildes"));
 		
 		return sp;
 

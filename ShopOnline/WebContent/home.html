@@ -15,6 +15,8 @@
 <script type="text/javascript" src="./js/move-top.js"></script>
 <script type="text/javascript" src="./js/easing.js"></script>
 <script type="text/javascript" src="./js/nav-hover.js"></script>
+<script type="text/javascript" src="./js/datamodle.js"></script>
+<script type="text/javascript" src="./js/interface.js"></script>
 <script type="text/javascript">
 	$(document).ready(function($) {
 		$('#dc_mega-menu-orange').dcMegaMenu({
@@ -27,6 +29,7 @@
 	
 		var mainheight = $(this).contents().find("body").height() + 30;
 		$(this).height(height);
+		
 
 		});
 
@@ -58,11 +61,10 @@
 		$("#main_iframe").attr("src", url);
 	}
 	
-	
 </script>
 
 </head>
-<body class ="homebody" id="homebody">
+<body onload = "loadcart()" class ="homebody" id="homebody">
 	<div id="home_wrap" class="wrap">
 		<div class="header">
 			<div class="header_top">
@@ -81,7 +83,7 @@
 						<div class="cart">
 							<a href="#" title="查看我的购物车" rel="nofollow"> <strong
 								class="opencart"> </strong> <span class="cart_title">购物车</span>
-								<span class="no_product">(empty)</span>
+								<span id = "home_cart_count" class="no_product"></span>
 							</a>
 						</div>
 					</div>
@@ -99,6 +101,7 @@
 					<li><a id="newscenter" onclick="switchContent(this.id)" href="#">新闻中心</a>
 					<li><a id="sucessful"  onclick="switchContent(this.id)" href="#">加盟案例</a>
 					<li><a id="mallOnLine" href="#" onclick="switchContent(this.id)">在线商城</a></li>
+					<li><a id="contactUs" href="#" onclick="switchContent(this.id)">在线加盟</a></li>
 					<li><a id="faqs" href="#" onclick="switchContent(this.id)">常见问题</a></li>
 					<li><a id="contactUs" href="#" onclick="switchContent(this.id)">联系我们</a></li>
 					<div class="clear"></div>
@@ -106,7 +109,7 @@
 			</div>
 		</div>
 
-		<iframe id="main_iframe"  width="1024px"></iframe>
+		<iframe id="main_iframe" height = 500  width="1024px"></iframe>
 
 		<div class="footer">
 			<div class="section group">
